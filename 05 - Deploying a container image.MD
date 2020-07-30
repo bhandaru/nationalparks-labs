@@ -1,7 +1,7 @@
-Deploying Your First Container Image
+## Deploying Your First Container Image
 
 In this lab, we’re going to deploy the web component of the ParksMap application which is also called parksmap and uses OpenShift’s service discovery mechanism to discover the backend services deployed and shows their data on the map.
-Application architecture
+![Application architecture](https://github.com/bhandaru/nationalparks-labs/blob/master/images/roadshow-app-architecture-parksmap-1.png)
 Exercise: Deploying your First Image
 
 Let’s start by doing the simplest thing possible - get a plain old Docker-formatted image to run on OpenShift. This is incredibly simple to do. With OpenShift it can be done directly from the web console.
