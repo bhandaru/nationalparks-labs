@@ -2,12 +2,12 @@
 
 
 ## Chapters  
-1. [Environment Overivew](https://github.com/bhandaru/nationalparks-labs/blob/master/01%20-%20Environment%20Overview)  
-2. [Installing Client](https://github.com/bhandaru/nationalparks-labs/blob/master/02%20-%20Installing%20Client)  
-3. [Exploring CLI & Web Console](./03 - Exploring CLI & Web Console)  
-4. [Architecture of Parksmap Application](./04 - Application Architecture)  
-    5. [Deploying a container image](./05 - Deploying a container image)  
-    6. [Scaling & Self Healing](./06%20-%20Scaling and Healing)  
+    1. [Environment Overivew](https://github.com/bhandaru/nationalparks-labs/blob/master/01%20-%20Environment%20Overview)  
+    2. [Installing Client](https://github.com/bhandaru/nationalparks-labs/blob/master/02%20-%20Installing%20Client)  
+    3. [Exploring CLI & Web Console](https://github.com/bhandaru/nationalparks-labs/blob/master/03%20-%20Exploring%20CLI%20%26%20Web%20Console)  
+    4. [Architecture of Parksmap Application](https://github.com/bhandaru/nationalparks-labs/blob/master/04%20-%20Application%20Architecture)  
+    5. [Deploying a container image](https://github.com/bhandaru/nationalparks-labs/blob/master/05%20-%20Deploying%20a%20container%20image)  
+    6. [Scaling & Self Healing](https://github.com/bhandaru/nationalparks-labs/blob/master/06%20-%20Scaling%20and%20Healing)  
     7. [Exposing Applications to outside world](./07%20-%20Exposing Applications to outside world)  
     8. [OpenShift Logging Capabilities](./08%20-%20OpenShift Logging Capabilities)  
     9. [Role Based Access Control](./09%20-%20Role Based Access Control)  
