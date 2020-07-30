@@ -6,7 +6,7 @@ While Services provide routing and load balancing for Pods, which may go in and 
 
 A DeploymentConfiguration (DC) defines how something in OpenShift should be deployed. From the deployments documentation:
 
-"Building on replication controllers, OpenShift adds expanded support for the software development and deployment lifecycle with the concept of deployments. In the simplest case, a deployment just creates a new replication controller and lets it start up pods. However, OpenShift deployments also provide the ability to transition from an existing deployment of an image to a new one and also define hooks to be run before or after creating the replication controller."
+*"Building on replication controllers, OpenShift adds expanded support for the software development and deployment lifecycle with the concept of deployments. In the simplest case, a deployment just creates a new replication controller and lets it start up pods. However, OpenShift deployments also provide the ability to transition from an existing deployment of an image to a new one and also define hooks to be run before or after creating the replication controller."*
 
 In almost all cases, you will end up using the **Pod, Service, ReplicationController** and **DeploymentConfiguration** resources together. And, in almost all of those cases, OpenShift will create all of them for you.
 
