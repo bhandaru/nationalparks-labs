@@ -5,18 +5,12 @@ OpenShift cluster URL
 
 Address: https://master.osevg.openshiftworkshop.com
 
+```
 Username: userXY
 Password: openshift
-Workshop Guides
+```
 
-Web: http://starter-guides-ocp-workshop.apps.osevg.openshiftworkshop.com
-Etherpad
+Get Username: 
 
-Web: http://etherpad-ocp-workshop.apps.osevg.openshiftworkshop.com/p/workshop
-Web terminal
 
-Web: http://nexus-ocp-workshop.apps.osevg.openshiftworkshop.com
-OpenShift Ops View
-
-Web: http://ocp-ops-view-ocp-workshop.apps.osevg.openshiftworkshop.com
 
