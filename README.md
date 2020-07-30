@@ -3,7 +3,7 @@
 
 ## Chapters  
 
-  1. Environment Overivew  
+  1. [Environment Overivew](./01%20-%20Environment%20Overview)  
   2. Installing Client  
   3. Exploring CLI & Web Console  
   4. Architecture of Parksmap Application  
