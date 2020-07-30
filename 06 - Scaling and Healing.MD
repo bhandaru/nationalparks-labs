@@ -6,11 +6,11 @@ While Services provide routing and load balancing for Pods, which may go in and 
 
 A DeploymentConfiguration (DC) defines how something in OpenShift should be deployed. From the deployments documentation:
 
-    Building on replication controllers, OpenShift adds expanded support for the software development and deployment lifecycle with the concept of deployments. In the simplest case, a deployment just creates a new replication controller and lets it start up pods. However, OpenShift deployments also provide the ability to transition from an existing deployment of an image to a new one and also define hooks to be run before or after creating the replication controller. 
+"Building on replication controllers, OpenShift adds expanded support for the software development and deployment lifecycle with the concept of deployments. In the simplest case, a deployment just creates a new replication controller and lets it start up pods. However, OpenShift deployments also provide the ability to transition from an existing deployment of an image to a new one and also define hooks to be run before or after creating the replication controller."
 
-In almost all cases, you will end up using the Pod, Service, ReplicationController and DeploymentConfiguration resources together. And, in almost all of those cases, OpenShift will create all of them for you.
+In almost all cases, you will end up using the **Pod, Service, ReplicationController** and **DeploymentConfiguration** resources together. And, in almost all of those cases, OpenShift will create all of them for you.
 
-There are some edge cases where you might want some Pods and an RC without a DC or a Service, and others, so feel free to ask us about them after the labs.
+There are some edge cases where you might want some **Pods** and an **RC** without a **DC** or a **Service**, and others, so feel free to ask us about them after the labs.
 
 ## Exercise: Exploring Deployment-related Objects
 
@@ -21,51 +21,66 @@ oc get dc
 NAME       REVISION   DESIRED   CURRENT   TRIGGERED BY
 parksmap   1          1         1         config,image(parksmap:1.2.0)
 
-To get more details, we can look into the ReplicationController (RC).
+To get more details, we can look into the **ReplicationController** (**RC**).
 
-Take a look at the ReplicationController (RC) that was created for you when you told OpenShift to stand up the parksmap image:
+Take a look at the **ReplicationController** (RC) that was created for you when you told OpenShift to stand up the parksmap image:
 
+```
 oc get rc
+```
 
+```
 NAME         DESIRED   CURRENT   READY     AGE
 parksmap-1   1         1         0         4h
+```
 
-This lets us know that, right now, we expect one Pod to be deployed (Desired), and we have one Pod actually deployed (Current). By changing the desired number, we can tell OpenShift that we want more or less Pods.
+This lets us know that, right now, we expect one **Pod** to be deployed (Desired), and we have one **Pod** actually deployed (Current). By changing the desired number, we can tell OpenShift that we want more or less **Pods**.
 
-OpenShift’s HorizontalPodAutoscaler effectively monitors the CPU usage of a set of instances and then manipulates the RCs accordingly.
+OpenShift’s **HorizontalPodAutoscaler** effectively monitors the CPU usage of a set of instances and then manipulates the RCs accordingly.
 
-You can learn more about the CPU-based Horizontal Pod Autoscaler here
+You can learn more about the CPU-based [Horizontal Pod Autoscaler here](https://docs.openshift.com/container-platform/4.4/nodes/pods/nodes-pods-autoscaling.html).
 
 ## Exercise: Scaling the Application
 
 Let’s scale our parksmap "application" up to 2 instances. We can do this with the scale command. You could also do this by clicking the "up" arrow next to the Pod in the OpenShift web console on the overview page. It’s your choice.
 
+```
 $ oc scale --replicas=2 dc/parksmap
+```
 
 You can also scale up to two pods by clicking the up arrow in the web console as shown in the following image:
 Scaling
 
 To verify that we changed the number of replicas, issue the following command:
 
+```
 oc get rc
-
+```
+```
 NAME         DESIRED   CURRENT   READY     AGE
 parksmap-1   2         2         0         4h
+```
 
 You can see that we now have 2 replicas. Let’s verify the number of pods with the oc get pods command:
 
+```
 oc get pods
-
+```
+```
 NAME               READY     STATUS    RESTARTS   AGE
 parksmap-1-8g6lb   1/1       Running   0          1m
 parksmap-1-hx0kv   1/1       Running   0          4h
+```
 
 And lastly, let’s verify that the Service that we learned about in the previous lab accurately reflects two endpoints:
 
+```
 oc describe svc parksmap
+```
 
 You will see something like the following output:
 
+```
 Name:              parksmap
 Namespace:         userXY
 Labels:            app=workshop
@@ -79,15 +94,19 @@ TargetPort:        8080/TCP
 Endpoints:         10.1.0.5:8080,10.1.1.5:8080
 Session Affinity:  None
 Events:            <none>
-
+```
 Another way to look at a Service's endpoints is with the following:
 
+```
 oc get endpoints parksmap
+```
 
 And you will see something like the following:
 
+```
 NAME       ENDPOINTS                                   AGE
 parksmap   10.1.0.5:8080,10.1.1.5:8080                 4h
+```
 
 Your IP addresses will likely be different, as each pod receives a unique IP within the OpenShift environment. The endpoint list is a quick way to see how many pods are behind a service.
 
