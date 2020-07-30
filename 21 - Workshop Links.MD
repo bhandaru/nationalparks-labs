@@ -15,15 +15,6 @@ Etherpad
 Web: http://etherpad-ocp-workshop.apps.osevg.openshiftworkshop.com/p/workshop
 Web terminal
 
-Web: http://terminal-ocp-workshop.apps.osevg.openshiftworkshop.com
-Git Server
-
-Web: http://gogs-ocp-workshop.apps.osevg.openshiftworkshop.com
-
-Username: userXY
-Password: openshift
-Nexus Maven repository
-
 Web: http://nexus-ocp-workshop.apps.osevg.openshiftworkshop.com
 OpenShift Ops View
 
