@@ -16,10 +16,13 @@ There are some edge cases where you might want some **Pods** and an **RC** witho
 
 Now that we know the background of what a ReplicatonController and DeploymentConfig are, we can explore how they work and are related. Take a look at the DeploymentConfig (DC) that was created for you when you told OpenShift to stand up the parksmap image:
 
+```
 oc get dc
-
+```
+```
 NAME       REVISION   DESIRED   CURRENT   TRIGGERED BY
 parksmap   1          1         1         config,image(parksmap:1.2.0)
+```
 
 To get more details, we can look into the **ReplicationController** (**RC**).
 
