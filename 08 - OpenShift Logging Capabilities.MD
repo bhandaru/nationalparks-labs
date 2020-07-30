@@ -1,34 +1,44 @@
-Exploring OpenShift's Logging Capabilities
+# Exploring OpenShift's Logging Capabilities
 
-OpenShift provides some convenient mechanisms for viewing application logs. First and foremost is the ability to examine a Pod's logs directly from the web console or via the command line.
-Background: Container Logs
+OpenShift provides some convenient mechanisms for viewing application logs. First and foremost is the ability to examine a **Pod**'s logs directly from the web console or via the command line.
+
+## Background: Container Logs
 
 OpenShift is constructed in such a way that it expects containers to log all information to STDOUT. In this way, both regular and error information is captured via standardized Docker mechanisms. When exploring the Pod's logs directly, you are essentially going through the Docker daemon to access the container’s logs, through OpenShift’s API. Neat!
 	
 
-In some cases, applications may not have been designed to send all of their information to STDOUT and STDERR. In many cases, multiple local log files are used. While OpenShift cannot parse any information from these files, nothing prevents them from being created, either. In other cases, log information is sent to some external system. Here, too, OpenShift does not prohibit these behaviors. If you have an application that does not log to STDOUT, either because it already sends log information to some "external" system or because it writes various log information to various files, fear not.
-Exercise: Examining Logs
+:information_source: In some cases, applications may not have been designed to send all of their information to STDOUT and STDERR. In many cases, multiple local log files are used. While OpenShift cannot parse any information from these files, nothing prevents them from being created, either. In other cases, log information is sent to some external system. Here, too, OpenShift does not prohibit these behaviors. If you have an application that does not log to STDOUT, either because it already sends log information to some "external" system or because it writes various log information to various files, fear not.
+
+##Exercise: Examining Logs
 
 Since we already deployed our application, we can take some time to examine its logs. In the web console Overview page, click on the kebab menu (three squares) at the far right of the deployment and then click on the View Logs item.
-View Logs
+![View Logs](https://github.com/bhandaru/nationalparks-labs/blob/master/images/LogsMenu.png)
 
-You should see a nice view of the Pod's logs:
-Application Logs
-	It appears there are some errors in the log, and that’s okay. We’ll remedy those in a little bit.
+You should see a nice view of the **Pod**'s logs:
+
+![Application Logs](https://github.com/bhandaru/nationalparks-labs/blob/master/images/ViewLogs.png)
+
+:information_source: It appears there are some errors in the log, and that’s okay. We’ll remedy those in a little bit.
 
 You also have the option of viewing logs from the command line. Get the name of your Pod:
 
+```
 oc get pods
-
+```
+```
 NAME               READY     STATUS    RESTARTS   AGE
 parksmap-1-hx0kv   1/1       Running   0          5h
+```
 
-And then use the logs command to view this Pod's logs:
+And then use the ``logs``` command to view this Pod's logs:
 
+```
 oc logs parksmap-1-hx0kv
+```
 
 You will see all of the application logs scroll on your screen:
 
+```
 15:34:25.844 [main] DEBUG io.fabric8.kubernetes.client.Config - Trying to configure client from Kubernetes config...
 15:34:25.937 [main] DEBUG io.fabric8.kubernetes.client.Config - Did not find Kubernetes config at: [/.kube/config]. Ignoring.
 15:34:25.937 [main] DEBUG io.fabric8.kubernetes.client.Config - Trying to configure client from service account...
@@ -37,16 +47,19 @@ You will see all of the application logs scroll on your screen:
 15:34:25.961 [main] DEBUG io.fabric8.kubernetes.client.Config - Trying to configure client namespace from Kubernetes service account namespace path...
 15:34:25.962 [main] DEBUG io.fabric8.kubernetes.client.Config - Found service account namespace at: [/var/run/secrets/kubernetes.io/serviceaccount/namespace].
 ....
+```
+:information_source: You may have noticed an error that mentions a service account. What’s that? Never fear, we will cover that shortly.
 
-	You may have noticed an error that mentions a service account. What’s that? Never fear, we will cover that shortly.
-Exercise: Aggregated Pod Logs
-	This section is only relevant if the aggregated logging capability is available in the OpenShift cluster, as this capability is optional.
+<!--
+## Exercise: Aggregated Pod Logs
 
-When your application consists of only one Pod and it never fails, restarts, or has other issues, these ways to view logs may not be so bad. However in a scaled-out application where Pods may have restarted, been scaled up or down, or if you just want to get historical information, these mechanisms may be insufficient.
+:information_source: This section is only relevant if the aggregated logging capability is available in the OpenShift cluster, as this capability is optional.
+
+When your application consists of only one **Pod** and it never fails, restarts, or has other issues, these ways to view logs may not be so bad. However in a scaled-out application where **Pods** may have restarted, been scaled up or down, or if you just want to get historical information, these mechanisms may be insufficient.
 
 Fortunately, OpenShift provides an optional system for log aggregation that uses Elasticsearch, Fluentd, and Kibana (EFK).
 
-In the OpenShift web console on the Pod's logs page, at the right you will see a "View Archive" link. Go ahead and click it. If you do not see the "archive" link, ensure that you have at least two pods running. If you don’t, use the information you learned in a previous lab to scale up to two instances of the application. You will need to accept the SSL certificate.
+In the OpenShift web console on the **Pod**'s logs page, at the right you will see a "View Archive" link. Go ahead and click it. If you do not see the "archive" link, ensure that you have at least two pods running. If you don’t, use the information you learned in a previous lab to scale up to two instances of the application. You will need to accept the SSL certificate.
 View Logs
 	
 
@@ -80,5 +93,6 @@ Try the following search string ensuring that you use the correct name for your 
 	In the following Kibana search(es), replace userXY with the project provided to you.
 
 kubernetes.namespace_name:"userXY" AND message:"Failure executing"
+-->
 
 
