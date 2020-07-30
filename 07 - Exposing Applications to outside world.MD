@@ -7,6 +7,8 @@ In this lab, we’re going to make our application visible to the end users, so 
 
 While **Services** provide internal abstraction and load balancing within an OpenShift environment, sometimes clients (users, systems, devices, etc.) **outside** of OpenShift need to access an application. The way that external clients are able to access applications running in OpenShift is through the OpenShift routing layer. And the data object behind that is a **Route**.
 
+![Create Route](https://github.com/bhandaru/nationalparks-labs/blob/master/images/Routes.png)
+
 The default OpenShift router (HAProxy) uses the HTTP header of the incoming request to determine where to proxy the connection. You can optionally define security, such as TLS, for the **Route**. If you want your Services, and, by extension, your Pods, to be accessible from the outside world, you need to create a **Route**.
 
 ## Exercise: Creating a Route
