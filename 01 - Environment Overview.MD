@@ -1,6 +1,6 @@
 # Environment Overview.   
   
-## OCP Architecture
+<div align="center">## OCP Architecture</div>
 
 ![](/images/common-environment-ocp-architecture.png)  
 
