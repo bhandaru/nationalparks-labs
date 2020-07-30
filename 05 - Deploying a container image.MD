@@ -123,7 +123,8 @@ The web interface also shows a lot of the same information on the Pod details pa
 Pod list
 
 Getting the parksmap image running may take a little while to complete. Each OpenShift node that is asked to run the image has to pull (download) it, if the node does not already have it cached locally. You can check on the status of the image download and deployment in the Pod details page, or from the command line with the oc get pods command that you used before.
-<--
+
+<!--
 ## Background: Customizing the Image Lifecycle Behavior
 
 Whenever OpenShift asks the node’s CRI (Container Runtime Interface) runtime (Docker daemon or CRI-O) to run an image, the runtime will check to make sure it has the right "version" of the image to run. If it doesn’t, it will pull it from the specified registry.
