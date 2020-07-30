@@ -1,17 +1,19 @@
-Adding a Database (MongoDB)
+# Adding a Database (MongoDB)
 
 In this lab, we’re going to deploy a Mongo database that will be used to store the data for the nationalparks application. We will also connect the nationalparks service with the newly deployed MongoDB database, so that the nationalparks service can load and query the database for the corresponding information.
 
 Finally, we will mark the nationalparks application as a backend for the map visualization tool, so that it can be dynamically discovered by the parksmap component using the OpenShift discovery mechanism and the map will be displayed automatically.
-Application architecture
-Background: Storage
+![Application architecture](https://github.com/bhandaru/nationalparks-labs/blob/master/images/mongodb-arch.png)
 
-Most useful applications are "stateful" or "dynamic" in some way, and this is usually achieved with a database or other data storage. In this lab we are going to add MongoDB to our nationalparks application and then rewire it to talk to the database using environment variables via a secret.
+## Background: Storage
+
+Most useful applications are "stateful" or "dynamic" in some way, and this is usually achieved with a database or other data storage. In this lab we are going to add MongoDB to our ```nationalparks``` application and then rewire it to talk to the database using environment variables via a secret.
 
 We are going to use the MongoDB image that is included with OpenShift.
 
-By default, this will use EmptyDir for data storage, which means if the Pod disappears the data does as well. In a real application you would use OpenShift’s persistent storage mechanism to attach real-world storage (NFS, Gluster, EBS, etc) to the Pods to give them a persistent place to store their data.
-Exercise: Deploy MongoDB
+By default, this will use **EmptyDir** for data storage, which means if the Pod disappears the data does as well. In a real application you would use OpenShift’s persistent storage mechanism to attach real-world storage (NFS, Gluster, EBS, etc) to the Pods to give them a persistent place to store their data.
+
+## Exercise: Deploy MongoDB
 
 As you’ve seen so far, the web console makes it very easy to deploy things onto OpenShift. When we deploy the database, we pass in some values for configuration. These values are used to set the username, password, and name of the database.
 
