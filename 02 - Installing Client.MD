@@ -1,61 +1,68 @@
-Installing the *oc* client tool
-Command Line Interface
+# Installing the *oc* client tool  
 
-OpenShift ships with a feature rich web console as well as command line tools to provide users with a nice interface to work with applications deployed to the platform. The OpenShift tools are a single executable written in the Go programming language and is available for the following operating systems:
+## Command Line Interface  
 
-    Microsoft Windows
+OpenShift ships with a feature rich web console as well as command line tools to provide users with a nice interface to work with applications deployed to the platform. The OpenShift tools are a single executable written in the Go programming language and is available for the following operating systems:  
+   * Microsoft Windows  
+   * macOS 10  
+   * Linux  
 
-    macOS 10
-
-    Linux
-
-You might already have the OpenShift CLI available on your environment. You can verify it by running an oc command:
-
+You might already have the OpenShift CLI available on your environment. You can verify it by running an oc command:  
+```
 $ oc version
+```
 
-You should see the following (or something similar):
+You should see the following (or something similar):  
+```
+Client Version: 4.4.8
+Server Version: 4.4.8
+Kubernetes Version: v1.17.1+3f6f40d
+```
 
-oc v3.11.0+0cbc58b
-kubernetes v1.11.0+d4cacc0
+If the ```oc``` doesn’t exist or you have an older version of the OpenShift CLI, follow the next sections to install or update the OpenShift CLI. Otherwise, skip to the next lab.  
 
-If the oc doesn’t exist or you have an older version of the OpenShift CLI, follow the next sections to install or update the OpenShift CLI. Otherwise, skip to the next lab.
-Download and Install OpenShift CLI on Windows
+## Download and Install OpenShift CLI on Windows  
 
-Download the the OpenShift CLI tool for Microsoft Windows
+Download the the OpenShift CLI tool for [Microsoft Windows](https://github.com/bhandaru/nationalparks-labs/blob/master/occlients/oc-4.4.8-windows.zip)  
 
-Once the file has been downloaded, you will need to extract the contents as it is a compressed archive. I would suggest saving this file to the following directories:
+Once the file has been downloaded, you will need to extract the contents as it is a compressed archive. I would suggest saving this file to the following directories:  
 
+```
 C:\OpenShift
+```
 
-In order to extract a zip archive on windows, you will need a zip utility installed on your system. With newer versions of windows (greater than XP), this is provided by the operating system. Just right click on the downloaded file using file explorer and select to extract the contents.
+In order to extract a zip archive on windows, you will need a zip utility installed on your system. With newer versions of windows (greater than XP), this is provided by the operating system. Just right click on the downloaded file using file explorer and select to extract the contents.  
 
-Now you can add the OpenShift CLI tools to your PATH. Because changing your PATH on windows varies by version of the operating system, we will not list each operating system here. However, the general workflow is right click on your computer name inside of the file explorer. Select Advanced system settings. I guess changing your PATH is considered an advanced task? :) Click on the advanced tab, and then finally click on Environment variables. Once the new dialog opens, select the Path variable and add ;C:\OpenShift at the end. For an easy way out, you could always just copy it to C:\Windows or a directory you know is already on your path. For more detailed instructions:
+Now you can add the OpenShift CLI tools to your PATH. Because changing your PATH on windows varies by version of the operating system, we will not list each operating system here. However, the general workflow is right click on your computer name inside of the file explorer. Select Advanced system settings. I guess changing your PATH is considered an advanced task? :) Click on the advanced tab, and then finally click on Environment variables. Once the new dialog opens, select the Path variable and add ```;C:\OpenShift``` at the end. For an easy way out, you could always just copy it to ```C:\Windows``` or a directory you know is already on your path. For more detailed instructions:  
 
-    Windows XP
-
-    Windows Vista
-
-    Windows 7 -Windows 8
-
-    Windows 10 - Follow the directions above.
+    * Windows XP - https://support.microsoft.com/en-us/kb/310519  
+    * Windows Vista - http://banagale.com/changing-your-system-path-in-windows-vista.htm  
+    * Windows 7 & Windows 8 - http://geekswithblogs.net/renso/archive/2009/10/21/how-to-set-the-windows-path-in-windows-7.aspx  
+    * Windows 10 - Follow the directions above.  
 
 At this point, we should have the oc tool available for use. Let’s test this out by printing the version of the oc command:
-
+```
 > oc version
+```
 
 You should see the following (or something similar):
-
-oc v3.11.0+0cbc58b
-kubernetes v1.11.0+d4cacc0
+```
+Client Version: 4.4.8
+Server Version: 4.4.8
+Kubernetes Version: v1.17.1+3f6f40d
+```
 
 If you get an error message, you have not updated your path correctly. If you need help, raise your hand and the instructor will assist.
 Download and Install OpenShift CLI on Linux
 
-Download the the OpenShift CLI tool for Linux 64
+## Download and Install OpenShift CLI on Linux
+Download the the OpenShift CLI tool for [Linux 64](https://github.com/bhandaru/nationalparks-labs/blob/master/occlients/oc-4.4.8-linux.tar.gz)
 
 Once the file has been downloaded, you will need to extract the contents as it is a compressed archive. I would suggest saving this file to the following directories:
 
+```
 ~/openShift
+```
 
 Open up a terminal window and change to the directory where you downloaded the file. Once you are in the directory, enter in the following command:
 	The name of the oc packaged archive may vary. Adjust accordingly.
