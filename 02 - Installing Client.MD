@@ -1,99 +1,167 @@
-Exploring the CLI and Web Console
-Command Line
+Installing the *oc* client tool
+Command Line Interface
 
-The first thing we want to do to ensure that our oc command line tools was installed and successfully added to our path is to log in to the OpenShift environment that has been provided for this Workshop session.
+OpenShift ships with a feature rich web console as well as command line tools to provide users with a nice interface to work with applications deployed to the platform. The OpenShift tools are a single executable written in the Go programming language and is available for the following operating systems:
+
+    Microsoft Windows
+
+    macOS 10
+
+    Linux
+
+You might already have the OpenShift CLI available on your environment. You can verify it by running an oc command:
+
+$ oc version
+
+You should see the following (or something similar):
+
+oc v3.11.0+0cbc58b
+kubernetes v1.11.0+d4cacc0
+
+If the oc doesn’t exist or you have an older version of the OpenShift CLI, follow the next sections to install or update the OpenShift CLI. Otherwise, skip to the next lab.
+Download and Install OpenShift CLI on Windows
+
+Download the the OpenShift CLI tool for Microsoft Windows
+
+Once the file has been downloaded, you will need to extract the contents as it is a compressed archive. I would suggest saving this file to the following directories:
+
+C:\OpenShift
+
+In order to extract a zip archive on windows, you will need a zip utility installed on your system. With newer versions of windows (greater than XP), this is provided by the operating system. Just right click on the downloaded file using file explorer and select to extract the contents.
+
+Now you can add the OpenShift CLI tools to your PATH. Because changing your PATH on windows varies by version of the operating system, we will not list each operating system here. However, the general workflow is right click on your computer name inside of the file explorer. Select Advanced system settings. I guess changing your PATH is considered an advanced task? :) Click on the advanced tab, and then finally click on Environment variables. Once the new dialog opens, select the Path variable and add ;C:\OpenShift at the end. For an easy way out, you could always just copy it to C:\Windows or a directory you know is already on your path. For more detailed instructions:
+
+    Windows XP
+
+    Windows Vista
+
+    Windows 7 -Windows 8
+
+    Windows 10 - Follow the directions above.
+
+At this point, we should have the oc tool available for use. Let’s test this out by printing the version of the oc command:
+
+> oc version
+
+You should see the following (or something similar):
+
+oc v3.11.0+0cbc58b
+kubernetes v1.11.0+d4cacc0
+
+If you get an error message, you have not updated your path correctly. If you need help, raise your hand and the instructor will assist.
+Download and Install OpenShift CLI on Linux
+
+Download the the OpenShift CLI tool for Linux 64
+
+Once the file has been downloaded, you will need to extract the contents as it is a compressed archive. I would suggest saving this file to the following directories:
+
+~/openShift
+
+Open up a terminal window and change to the directory where you downloaded the file. Once you are in the directory, enter in the following command:
+	The name of the oc packaged archive may vary. Adjust accordingly.
+
+$ tar zxvf oc-linux.tar.gz
+
+The tar.gz file name needs to be replaced by the entire name that was downloaded in the previous step.
+
+Now you can add the OpenShift CLI tools to your PATH.
+
+$ export PATH=$PATH:~/openShift
+
+At this point, we should have the oc tool available for use. Let’s test this out by printing the version of the oc command:
+
+$ oc version
+
+You should see the following (or something similar):
+
+oc v3.11.0+0cbc58b
+kubernetes v1.11.0+d4cacc0
+
+If you get an error message, you have not updated your path correctly. If you need help, raise your hand and the instructor will assist.
+Download and Install OpenShift CLI on Mac
+
+Download the the OpenShift CLI tool for Mac
+
+Once the file has been downloaded, you will need to extract the contents as it is a compressed archive. I would suggest saving this file to the following directories:
+
+~/openShift
+
+Open up a terminal window and change to the directory where you downloaded the file. Once you are in the directory, enter in the following command:
+	The name of the oc packaged archive may vary. Adjust accordingly.
+
+$ tar zxvf oc-macosx.tar.gz
+
+The tar.gz file name needs to be replaced by the entire name that was downloaded in the previous step.
+
+Now you can add the OpenShift CLI tools to your PATH.
+
+$ export PATH=$PATH:~/openShift
+
+At this point, we should have the oc tool available for use. Let’s test this out by printing the version of the oc command:
+
+$ oc version
+
+You should see the following (or something similar):
+
+oc v3.11.0+0cbc58b
+kubernetes v1.11.0+d4cacc0
+
+If you get an error message, you have not updated your path correctly. If you need help, raise your hand and the instructor will assist.
+Tab Completion
+
+The OpenShift command line tool supports the ability to use tab completion for the popular zsh and bash shells. This suits the needs of users using either Linux or OS X. If you are using Microsoft Windows, never fear, we will discuss some ways to get tab completion working on that operating system as well.
+Tab completion on Mac and Linux
+
+If you are on the Mac operating system, you will need to ensure that you have the bash-completion project installed. This can be accomplished using the popular brew system:
+
+$ brew install bash-completion
+
+If you’re on Linux, ensure you have bash-completion installed using your package manager (dnf, yum apt-get,…​)
+
+Once bash-completion package is available in your machine, to enable tab completion in your shell, you can simply enter in the following command from your terminal
+
+$ oc completion bash >> oc_completion.sh
+$ source oc_completion.sh
+
+Alternatively, you can add this to your .bashrc file.
+
+If you are using zsh, you can run the following command:
+
+$ source <(oc completion zsh)
+
+Alternatively, you can add this to your .zshrc file.
+Tab completion on Windows
+
+For Windows users, things become a bit more tricky. You could of course use the Linux Subsystem for Windows but you may want to consider using a combination of babun and cmder. For a full list of instructions, you can check out the following blog post:
+
+    https://blog.openshift.com/openshift-3-tab-completion-for-windows/
+
+Working with proxies
+
+It might happen that you’re behind a corporate proxy to access the internet. In this case, you’ll need to set some additional environment variables for the oc command line to work.
+
+Windows: Follow previous section’s instructions on how to set an Environment Variable on Windows. The variables you’ll need to set are:
+	Replace the proxy server with the one for your environment/machine.
+
+https_proxy=http://proxy-server.mycorp.com:3128/
+HTTPS_PROXY=http://proxy-server.mycorp.com:3128/
+
+macOS:
+	Replace the proxy server with the one for your environment/machine.
+
+$ export https_proxy=http://proxy-server.mycorp.com:3128/
+$ export HTTPS_PROXY=http://proxy-server.mycorp.com:3128/
+
+Linux:
+	Replace the proxy server with the one for your environment/machine.
+
+$ export https_proxy=http://proxy-server.mycorp.com:3128/
+$ export HTTPS_PROXY=http://proxy-server.mycorp.com:3128/
+
 	
 
-In case you had trouble installing the command line tools, you can go ahead and use a hosted version running in our OpenShift cluster. Open a new browser tab and point it to:
+If the proxy is secured, make sure to use the following URL pattern, replacing the contents with the appropriate values:
 
-http://terminal-ocp-workshop.apps.osevg.openshiftworkshop.com
+export https_proxy=http://USERNAME:PASSOWRD@proxy-server.mycorp.com:3128/
 
-You will need to log in with your OpenShift user and click on Allow selected permissions. You can then continue with the workshop.
-
-In order to log in, we will use the oc command and then specify the server that we want to authenticate to. Issue the following command:
-
-oc login https://master.osevg.openshiftworkshop.com
-
-You may see the following output:
-
-The server uses a certificate signed by an unknown authority.
-You can bypass the certificate check, but any data you send to the server could be intercepted by others.
-Use insecure connections? (y/n):
-
-Enter in Y to use a potentially insecure connection. The reason you received this message is because we are using a self-signed certificate for this workshop, but we did not provide you with the CA certificate that was generated by OpenShift. In a real-world scenario, either OpenShift’s certificate would be signed by a standard CA (eg: Thawte, Verisign, StartSSL, etc.) or signed by a corporate-standard CA that you already have installed on your system.
-	
-
-On some versions of Microsoft Windows, you may get an error that the server has an invalid x.509 certificate. If you receive this error, enter in the following command:
-
-oc login https://master.osevg.openshiftworkshop.com --insecure-skip-tls-verify=true
-
-Once you issue the oc login command, you will be prompted for the username and password combination for your user account. Use the username and password combination provided to you by the instructor of this workshop:
-
-Username: userXY
-Password: openshift
-
-Once you have authenticated to the OpenShift server, you will see the following confirmation message:
-
-Login successful.
-Using project "userXY".
-
-	
-
-If you don’t have any projects. You can try to create a new project, by running:
-
-oc new-project <projectname>
-
-Congratulations, you are now authenticated to the OpenShift server. The OpenShift master includes a built-in OAuth server. Developers and administrators obtain OAuth access tokens to authenticate themselves to the API. By default your authorization token will last for 24 hours. There is more information about the login command and its configuration in the OpenShift Documentation.
-Using a Project
-
-Projects are a top level concept to help you organize your deployments. An OpenShift project allows a community of users (or a user) to organize and manage their content in isolation from other communities. Each project has its own resources, policies (who can or cannot perform actions), and constraints (quotas and limits on resources, etc). Projects act as a "wrapper" around all the application services and endpoints you (or your teams) are using for your work.
-
-During this lab, we are going to use a few different commands to make sure that things in the environment are working as expected. Don’t worry if you don’t understand all of the terminology as we will cover it in detail in later labs.
-
-If you didn’t have a project already created for you, the first thing we want to do is create the userXY project. You can do this with the following command:
-	In the following command, replace userXY with the project provided to you.
-
-oc new-project userXY
-
-You will see the following confirmation message:
-
-Now using project "userXY" on server "https://master.osevg.openshiftworkshop.com".
-
-If you had multiple projects, the first thing you would want to do is to switch to the userXY project to make sure you’re on the correct project from now on. You can do this with the following command:
-	In the following command, replace userXY with the project provided to you.
-
-oc project userXY
-
-You will see the following confirmation message:
-
-Now using project "userXY" on server "https://master.osevg.openshiftworkshop.com".
-
-The Web Console
-
-OpenShift ships with a web-based console that will allow users to perform various tasks via a browser. To get a feel for how the web console works, open your browser and go to the following URL:
-
-https://master.osevg.openshiftworkshop.com
-
-The first screen you will see is the authentication screen. You will be prompted for the username and password combination for your user account. Use the username and password combination provided to you by the instructor of this workshop:
-
-Username: userXY
-Password: openshift
-
-OpenShift Login Screen
-
-After you have authenticated to the web console, you will be presented with a list of items that you can add to your project. This is called the service catalog. You will see something that looks like the following image:
-Web Console
-
-Click on the userXY project on the right hand side of the screen. When you click on the userXY project, you will be taken to the project overview page which will list all of the routes, services, deployments, and pods that you have running as part of your project. There’s nothing there now, but that’s about to change.
-Explore Project
-
-When the provided cluster has metrics aggregation capabilities configured you might see an error in the web console (when the cluster uses self signed certificates):
-Web Console
-
-Click the link that says Open metrics URL, and accept the certificate.
-Acept Certificates
-
-We need to accept another self-signed certificate for OpenShift’s metrics aggregation. If we don’t, then the metrics will not display in the OpenShift UI.
-Hawkular web
-
-We will be using a mix of command line tooling and the web console for the labs. Get ready!
+Special Characters: If your password contains special characters, you must replace them with ASCII codes, for example the at sign @ must be replaced by the %40 code, e.g. p@ssword = p%40ssword.
