@@ -22,11 +22,15 @@ Additionally, a predefined number of user accounts have been provisioned.
 
 Before continuing, please visit visit the Etherpad at the following URL:
 
+```
 http://etherpad-ocp-workshop.apps.osevg.openshiftworkshop.com/p/workshop
+```
 
 Decide on a user account among one of the available users or use the one that has been assigned to you by the instructor. Find that user account and type your name next to it. This will be your user account for the duration of these exercises. For example:
 
+```
 userXY=Luke Skywalker
+```
 
 If you already see a name next to a user account, it means that someone else has already claimed it.
 
