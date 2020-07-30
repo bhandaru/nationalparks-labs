@@ -2,7 +2,7 @@
 
 
 ## Chapters  
-    1. [Environment Overivew]https://github.com/bhandaru/nationalparks-labs/blob/master/01%20-%20Environment%20Overview  
+    1. [Environment Overivew](https://github.com/bhandaru/nationalparks-labs/blob/master/01%20-%20Environment%20Overview)  
     2. [Installing Client](https://github.com/bhandaru/nationalparks-labs/blob/master/02%20-%20Installing%20Client)  
     3. [Exploring CLI & Web Console](https://github.com/bhandaru/nationalparks-labs/blob/master/03%20-%20Exploring%20CLI%20%26%20Web%20Console)  
     4. [Architecture of Parksmap Application](https://github.com/bhandaru/nationalparks-labs/blob/master/04%20-%20Application%20Architecture)  
