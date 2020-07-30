@@ -4,9 +4,9 @@
 ## Chapters  
 1. [Environment Overivew](https://github.com/bhandaru/nationalparks-labs/blob/master/01%20-%20Environment%20Overview)  
 2. [Installing Client](https://github.com/bhandaru/nationalparks-labs/blob/master/02%20-%20Installing%20Client)  
-3. [Exploring CLI & Web Console](./03%20-%20Exploring CLI & Web Console)  
-4. [Architecture of Parksmap Application](./04%20-%20Application Architecture)  
-    5. [Deploying a container image](./05%20-%20Deploying a container image)  
+3. [Exploring CLI & Web Console](./03 - Exploring CLI & Web Console)  
+4. [Architecture of Parksmap Application](./04 - Application Architecture)  
+    5. [Deploying a container image](./05 - Deploying a container image)  
     6. [Scaling & Self Healing](./06%20-%20Scaling and Healing)  
     7. [Exposing Applications to outside world](./07%20-%20Exposing Applications to outside world)  
     8. [OpenShift Logging Capabilities](./08%20-%20OpenShift Logging Capabilities)  
