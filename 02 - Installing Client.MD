@@ -1,26 +1,4 @@
-
-    3. Exploring the CLI and Web Console
-    4. Architecture Overview of the ParksMap Application
-    5. Deploying Your First Container Image
-    6. Scaling and Self Healing
-    7. Exposing Your Application to the Outside World
-    8. Exploring OpenShift's Logging Capabilities
-    9. Role-Based Access Control
-    10. Remote Access to Your Application
-    11. Deploying Java Code
-    12. Adding a Database (MongoDB)
-    13. Application Health
-    14. Automate Build and Deployment with Pipelines
-    15. Automation for Your Application on Code Changes
-    16. Using Application Templates
-    17. Clustering Stateful Java EE Applications
-    18. Binary Builds for Day to Day Development
-    19. Using Port-Forwarding and Remote Debugging
-    20. Further Resources
-    21. Workshop Links
-    All labs in one page
-
-2 Installing the *oc* client tool
+Installing the *oc* client tool
 Command Line Interface
 
 OpenShift ships with a feature rich web console as well as command line tools to provide users with a nice interface to work with applications deployed to the platform. The OpenShift tools are a single executable written in the Go programming language and is available for the following operating systems:
