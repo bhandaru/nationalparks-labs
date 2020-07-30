@@ -107,7 +107,7 @@ After you have authenticated to the web console, you will be presented with a li
 
 ![Web Console](https://github.com/bhandaru/nationalparks-labs/blob/master/images/post-login.png)
 
-Explore the site
+Explore the site!!
 
 <!--
 Click on the userXY project on the right hand side of the screen. When you click on the userXY project, you will be taken to the project overview page which will list all of the routes, services, deployments, and pods that you have running as part of your project. There’s nothing there now, but that’s about to change.
