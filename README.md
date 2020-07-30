@@ -7,16 +7,19 @@ You can find all urls, hostnames, usernames and passwords that are needed during
 
 # OpenShift cluster URL
 
-Address: https://master.osevg.openshiftworkshop.com
+Address: https://master.osevg.openshiftworkshop.com  
+Bitly: https://tcs-citi-ocp.red.ht<br/>
 
-Bitly: https://tcs-citi-ocp.red.ht
+Username: userXY  
+Password: openshift  
 
-Username: userXY
-Password: openshift
+# Workshop Guides  
+Web: http://starter-guides-ocp-workshop.apps.osevg.openshiftworkshop.com  
+Bitly: https://nationalparks-labs.red.ht  
 
-# Workshop Guides
-Web: http://starter-guides-ocp-workshop.apps.osevg.openshiftworkshop.com
+# Etherpad - Reserve your user number.
+Web: http://etherpad-ocp-workshop.apps.osevg.openshiftworkshop.com/p/workshop  
+Bitly: https://getuserid.red.ht  
 
-Etherpad
 
-Web: http://etherpad-ocp-workshop.apps.osevg.openshiftworkshop.com/p/workshop
+
