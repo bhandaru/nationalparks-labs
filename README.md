@@ -24,7 +24,8 @@
 18. [Binary Builds for Day to Day Development](https://github.com/bhandaru/nationalparks-labs/blob/master/18%20-%20Binary%20Builds%20for%20Day%20to%20Day%20Development)  
 19. [Using Port-Forwarding and Remote Debugging](https://github.com/bhandaru/nationalparks-labs/blob/master/19%20-%20Using%20Port-Forwarding%20and%20Remote%20Debugging)  
 20. [Further Resources](https://github.com/bhandaru/nationalparks-labs/blob/master/20%20-%20Further%20Resources)  
-21. [Workshop Links](https://github.com/bhandaru/nationalparks-labs/blob/master/21%20-%20Workshop%20Links) 
 -->
+14. [Workshop Links](https://github.com/bhandaru/nationalparks-labs/blob/master/21%20-%20Workshop%20Links) 
+
 
 
