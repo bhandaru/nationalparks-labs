@@ -2,8 +2,8 @@
 
 
 ## Chapters  
-    1. [Environment Overivew](./01%20-%20Environment%20Overview)  
-    2. [Installing Client](./02%20-%20Installing Client)  
+    1. [Environment Overivew](./01 - Environment%20Overview)  
+    2. [Installing Client](./02 - Installing Client)  
     3. [Exploring CLI & Web Console](./03%20-%20Exploring CLI & Web Console)  
     4. [Architecture of Parksmap Application](./04%20-%20Application Architecture)  
     5. [Deploying a container image](./05%20-%20Deploying a container image)  
