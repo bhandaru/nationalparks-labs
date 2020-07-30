@@ -11,61 +11,56 @@ Most useful applications are "stateful" or "dynamic" in some way, and this is us
 
 We are going to use the MongoDB image that is included with OpenShift.
 
-By default, this will use **EmptyDir** for data storage, which means if the Pod disappears the data does as well. In a real application you would use OpenShift’s persistent storage mechanism to attach real-world storage (NFS, Gluster, EBS, etc) to the Pods to give them a persistent place to store their data.
+By default, this will use **EmptyDir** for data storage, which means if the **Pod** disappears the data does as well. In a real application you would use OpenShift’s persistent storage mechanism to attach real-world storage (NFS, Gluster, EBS, etc) to the **Pods** to give them a persistent place to store their data.
 
 ## Exercise: Deploy MongoDB
 
 As you’ve seen so far, the web console makes it very easy to deploy things onto OpenShift. When we deploy the database, we pass in some values for configuration. These values are used to set the username, password, and name of the database.
 
 The database image is built in a way that it will automatically configure itself using the supplied information (assuming there is no data already present in the persistent storage!). The image will ensure that:
+	* A database exists with the specified name
+	* A user exists with the specified name
+	* The user can access the specified database with the specified password
 
-    A database exists with the specified name
+In the web console in your ```userXY``` project, click the **"Add to Project"** button and then **"From Catalog"**. Select the "Databases" category and then "Mongo".
+![Data Stores](https://github.com/bhandaru/nationalparks-labs/blob/master/images/catalog-mongo.png)
+![Data Stores](https://github.com/bhandaru/nationalparks-labs/blob/master/images/template-mongo.png)
 
-    A user exists with the specified name
-
-    The user can access the specified database with the specified password
-
-In the web console in your userXY project, click the "Add to Project" button and then "Browse Catalog". Select the "Databases" category and then "Mongo".
-Data Stores
-
-Alternatively, you could type mongodb in the search box. Once you have drilled down to see MongoDB, scroll down to find the MongoDB (Ephemeral) template, and select it. You will notice that there are several MongoDB templates available. We do not need a database with persistent storage, so the ephemeral Mongo template is what you should choose. Go ahead and select the ephemeral template and click the next button.
-MongoDB
+Alternatively, you could type ```mongodb``` in the search box. Once you have drilled down to see MongoDB, scroll down to find the **MongoDB (Ephemeral) template**, and select it. You will notice that there are several MongoDB templates available. We do not need a database with persistent storage, so the ephemeral Mongo template is what you should choose. Go ahead and select the ephemeral template and click the next button.
+![MongoDB](https://github.com/bhandaru/nationalparks-labs/blob/master/images/ephemeral-mongo.png)
 
 When we performed the application build, there was no template. Rather, we selected the builder image directly and OpenShift presented only the standard build workflow. Now we are using a template - a preconfigured set of resources that includes parameters that can be customized. In our case, the parameters we are concerned with are — user, password, database, and admin password.
-MongoDB Deploy
-	Make sure you name your database service name mongodb-nationalparks
+![MongoDB Deploy](https://github.com/bhandaru/nationalparks-labs/blob/master/images/deploy-mongo.png)
+	
+:information_source: Make sure you name your database service name mongodb-nationalparks
 
-You can see that some of the fields say "generated if empty". This is a feature of Templates in OpenShift. For now, be sure to use the following values in their respective fields:
+You can see that some of the fields say **"generated if empty"**. This is a feature of **Templates** in OpenShift. For now, be sure to use the following values in their respective fields:
+	* MONGODB_USER : mongodb
+	* MONGODB_PASSWORD : mongodb
+	* MONGODB_DATABASE: mongodb
+	* MONGODB_ADMIN_PASSWORD : mongodb
 
-    MONGODB_USER : mongodb
-
-    MONGODB_PASSWORD : mongodb
-
-    MONGODB_DATABASE: mongodb
-
-    MONGODB_ADMIN_PASSWORD : mongodb
-
-	Make sure to have configured the MONGODB_DATABASE parameter with the appropriate value as by default it will already have a value of sampledb.
+:information_source: Make sure to have configured the MONGODB_DATABASE parameter with the appropriate value as by default it will already have a value of sampledb.
 
 Once you have entered in the above information, click on "Next" to go to the next step which will allow us to add a binding.
-Bind Mongo
+![MongoDB Deploy](https://github.com/bhandaru/nationalparks-labs/blob/master/images/final-mongo.png)
 
-This creates a "binding" (as a secret) in our project that we can use in other components, such as the national parks backend, to authenticate to the database.
+This creates a **"binding"** (as a secret) in our project that we can use in other components, such as the national parks backend, to authenticate to the database.
 
 While the database deploys, we will fix the labels assigned to the deployment. Currenly we can not set a label when using templates from the Service Catalog, so in this case we will fix this manually.
 
 Like before, we will add 3 labels:
-
-    app=workshop (the name we will be giving to the app)
-
-    component=nationalparks (the name of this deployment)
-
-    role=backend (the role this component plays in the overall application)
+	* app=workshop (the name we will be giving to the app)
+	* component=nationalparks (the name of this deployment)
+	* role=backend (the role this component plays in the overall application)
 
 Execute the following command:
 
+```
 oc label dc/mongodb-nationalparks svc/mongodb-nationalparks app=workshop component=nationalparks role=database --overwrite
+```
 
+<!--
 Now that the connection and authentication information is in a binding in our project, we need to add it to the nationalparks backend.
 National Parks Binding
 
@@ -76,75 +71,95 @@ Select nationalparks application and click Save.
 Add binding to application
 
 This change in configuration will trigger a new deployment of the nationalparks application with the binding properly injected.
-Exercise: Exploring OpenShift Magic
+-->
 
-As soon as we changed the DeploymentConfiguration, some magic happened. OpenShift decided that this was a significant enough change to warrant updating the internal version number of the DeploymentConfiguration. You can verify this by looking at the output of oc get dc:
+## Exercise: Exploring OpenShift Magic
 
+As soon as we changed the **DeploymentConfiguration**, some magic happened. OpenShift decided that this was a significant enough change to warrant updating the internal version number of the DeploymentConfiguration. You can verify this by looking at the output of ```oc get dc```:
+
+```
 NAME                    REVISION   DESIRED   CURRENT   TRIGGERED BY
 mongodb-nationalparks   1          1         1         config,image(mongodb:3.2)
 nationalparks           2          1         1         config,image(nationalparks:master)
 parksmap                2          1         1         config,image(parksmap:1.2.0))
+```
 
 Something that increments the version of a DeploymentConfiguration, by default, causes a new deployment. You can verify this by looking at the output of oc get rc:
 
+```
 NAME                      DESIRED   CURRENT   READY     AGE
 mongodb-nationalparks-1   1         1         1         24m
 nationalparks-1           0         0         0         3h
 nationalparks-2           1         1         1         8m
 parksmap-1                0         0         0         6h
 parksmap-2                1         1         1         5h
+```
 
 We see that the desired and current number of instances for the "-1" deployment is 0. The desired and current number of instances for the "-2" deployment is 1. This means that OpenShift has gracefully torn down our "old" application and stood up a "new" instance.
-Exercise: Data, Data, Everywhere
+
+## Exercise: Data, Data, Everywhere
 
 Now that we have a database deployed, we can again visit the nationalparks web service to query for data:
-	In the following url(s), replace userXY with the project provided to you.
+:information_source: In the following url(s), replace userXY with the project provided to you.
 
+```
 http://nationalparks-userXY.apps.osevg.openshiftworkshop.com/ws/data/all
+```
 
 And the result?
 
+```
 []
+```
 
 Where’s the data? Think about the process you went through. You deployed the application and then deployed the database. Nothing actually loaded anything INTO the database, though.
 
 The application provides an endpoint to do just that:
-	In the following url(s), replace userXY with the project provided to you.
+:information_source: In the following url(s), replace userXY with the project provided to you.
 
+```
 http://nationalparks-userXY.apps.osevg.openshiftworkshop.com/ws/data/load
+```
 
 And the result?
 
+```
 Items inserted in database: 2740
+```
 
-If you then go back to /ws/data/all you will see tons of JSON data now. That’s great. Our parks map should finally work!
-	There are some errors reported with browsers like Firefox 54 that don’t properly parse the resulting JSON. It’s a browser problem, and the application is working properly.
-	In the following url(s), replace userXY with the project provided to you.
+If you then go back to ```/ws/data/all``` you will see tons of JSON data now. That’s great. Our parks map should finally work!
 
+:information_source: There are some errors reported with browsers like Firefox 54 that don’t properly parse the resulting JSON. It’s a browser problem, and the application is working properly.
+
+:information_source: In the following url(s), replace userXY with the project provided to you.
+
+```
 http://parksmap-userXY.apps.osevg.openshiftworkshop.com
+```
 
 Hmm…​ There’s just one thing. The main map STILL isn’t displaying the parks. That’s because the front end parks map only tries to talk to services that have the right Label.
 	
 
-You are probably wondering how the database connection magically started working? When deploying applications to OpenShift, it is always best to use environment variables, secrets, or configMaps to define connections to dependent systems. This allows for application portability across different environments. The source file that performs the connection as well as creates the database schema can be viewed here:
+:information_source:  You are probably wondering how the database connection magically started working? When deploying applications to OpenShift, it is always best to use environment variables, secrets, or configMaps to define connections to dependent systems. This allows for application portability across different environments. The source file that performs the connection as well as creates the database schema can be viewed here:
 
+```
 http://www.github.com/openshift-roadshow/nationalparks/blob/master/src/main/java/com/openshift/evg/roadshow/parks/db/MongoDBConnection.java#L44-l48
+```
 
 In short summary: By referring to bindings to connect to services (like databases), it can be trivial to promote applications throughout different lifecycle environments on OpenShift without having to modify application code.
-Exercise: Working With Labels
+
+## Exercise: Working With Labels
 
 We explored how a Label is just a key=value pair earlier when looking at Services and Routes and Selectors. In general, a Label is simply an arbitrary key=value pair. It could be anything.
+* pizza=pepperoni
+* wicked=googly
+* openshift=awesome
 
-    pizza=pepperoni
-
-    wicked=googly
-
-    openshift=awesome
-
-In the case of the parks map, the application is actually querying the OpenShift API and asking about the Routes and Services in the project. If any of them have a Label that is type=parksmap-backend, the application knows to interrogate the endpoints to look for map data. You can see the code that does this here.
+In the case of the parks map, the application is actually querying the OpenShift API and asking about the **Routes** and **Services** in the project. If any of them have a **Label** that is ```type=parksmap-backend```, the application knows to interrogate the endpoints to look for map data. You can see the code that does this here.
 
 Fortunately, the command line provides a convenient way for us to manipulate labels. describe the nationalparks service:
 
+```
 $ oc describe route nationalparks
 
 Name:                   nationalparks
@@ -163,21 +178,26 @@ Endpoint Port:          8080-tcp
 Service:                nationalparks
 Weight:                 100 (100%)
 Endpoints:              10.1.9.8:8080
+```
 
 You see that it already has some labels. Now, use oc label:
 
+```
 oc label route nationalparks type=parksmap-backend
+```
 
 You will see something like:
 
+```
 route "nationalparks" labeled
+```
 
 If you check your browser now:
-	In the following url(s), replace userXY with the project provided to you.
+:information_source: In the following url(s), replace userXY with the project provided to you.
 
 http://parksmap-userXY.apps.osevg.openshiftworkshop.com/
 
-MongoDB
+![MongoDB](https://github.com/bhandaru/nationalparks-labs/blob/master/images/maps-final.pn)
 
 You’ll notice that the parks suddenly are showing up. That’s really cool!
 
