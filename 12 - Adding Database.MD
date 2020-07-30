@@ -197,7 +197,7 @@ If you check your browser now:
 
 http://parksmap-userXY.apps.osevg.openshiftworkshop.com/
 
-![MongoDB](https://github.com/bhandaru/nationalparks-labs/blob/master/images/maps-final.pn)
+![MongoDB](https://github.com/bhandaru/nationalparks-labs/blob/master/images/maps-final.png)
 
 You’ll notice that the parks suddenly are showing up. That’s really cool!
 
