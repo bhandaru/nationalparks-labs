@@ -12,10 +12,10 @@ The default OpenShift router (HAProxy) uses the HTTP header of the incoming requ
 ## Exercise: Creating a Route
 
 Fortunately, creating a Route is a pretty straight-forward process. You simply expose the Service via the command line. Or, via the web console, just click the "Create Route" button associated with the service and choose the defaults as highlighted in the following image:
-![Create Route](https://github.com/bhandaru/nationalparks-labs/blob/master/images/Routes.png)
+![Create Route](https://github.com/bhandaru/nationalparks-labs/blob/master/images/Routes1.png)
 
 When creating a route, some options can be provided, like the hostname for the route or the TLS configuration for the Route.
-Create Route editor
+![Create Route](https://github.com/bhandaru/nationalparks-labs/blob/master/images/CreateRoute.png)
 
 When using the command line, we can first verify that we don’t already have any existing route:
 
