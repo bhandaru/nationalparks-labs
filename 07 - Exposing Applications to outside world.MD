@@ -58,6 +58,8 @@ rksmap-userXY.apps.osevg.openshiftworkshop.com             parksmap   8080-tcp
 You can also verify the Route by looking at the project in the OpenShift web console:
 Route created
 
-Pretty nifty, huh? This application is now available at the URL shown in the web console. Click the link and you will see:
-Empty map
+Pretty nifty, huh? This application is now available at the URL shown in the web console. 
+
+Click the link and you will see:
+![Empty map](https://github.com/bhandaru/nationalparks-labs/blob/master/images/EmptyMap.png)
 
