@@ -5,7 +5,7 @@
 The first thing we want to do to ensure that our oc command line tools was installed and successfully added to our path is to log in to the OpenShift environment that has been provided for this Workshop session.
 	
 
-:information_source: In case you had trouble installing the command line tools, you can go ahead and use a hosted version running in our OpenShift cluster. Open a new browser tab and point it to: ```http://terminal-ocp-workshop.apps.osevg.openshiftworkshop.com``` You will need to log in with your OpenShift user and click on Allow selected permissions. You can then continue with the workshop.
+:information_source: **_In case you had trouble installing the command line tools, you can go ahead and use a hosted version running in our OpenShift cluster. Open a new browser tab and point it to: ```http://terminal-ocp-workshop.apps.osevg.openshiftworkshop.com``` You will need to log in with your OpenShift user and click on Allow selected permissions. You can then continue with the workshop. _**
 
 In order to log in, we will use the oc command and then specify the server that we want to authenticate to. Issue the following command:
 
