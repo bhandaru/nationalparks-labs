@@ -48,8 +48,7 @@ You will see all of the application logs scroll on your screen:
 15:34:25.962 [main] DEBUG io.fabric8.kubernetes.client.Config - Found service account namespace at: [/var/run/secrets/kubernetes.io/serviceaccount/namespace].
 ....
 ```
-:information_source: You may have noticed an error that mentions a service account. What’s that? Never fear, we will cover that shortly.
-
+:information_source: You may have noticed an error that mentions a service account. What’s that? Never fear, we can fix it.
 <!--
 ## Exercise: Aggregated Pod Logs
 
