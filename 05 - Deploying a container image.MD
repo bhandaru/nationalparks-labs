@@ -68,7 +68,7 @@ Pods can contain multiple OCI containers. The general idea is for a Pod to conta
 In the web console’s overview page you will see that there is a single Pod that was created by your actions.
 Pod overview
 
-![Explore Project](https://github.com/bhandaru/nationalparks-labs/blob/master/images/checkpod.png)
+![Explore Project](https://github.com/bhandaru/nationalparks-labs/blob/master/images/CheckPod.png)
 
 You can also get a list of all the pods created within your project, by navigating to "Applications → Pods"
 Pod list
@@ -82,15 +82,19 @@ oc get pods
 ```
 
 You should see output that looks similar to:
+
 ```
 NAME               READY     STATUS    RESTARTS   AGE
 parksmap-1-hx0kv   1/1       Running   0          2m
 ```
 
 The above output lists all of the Pods in the current Project, including the Pod name, state, restarts, and uptime. Once you have a Pod's name, you can get more information about the Pod using the oc get command. To make the output readable, I suggest changing the output type to YAML using the following syntax:
-	Make sure you use the correct Pod name from your output.
+	
+Make sure you use the correct Pod name from your output.
 
+```
 oc get pod parksmap-1-hx0kv -o yaml
+```
 
 You should see something like the following output (which has been truncated due to space considerations of this workshop manual):
 
