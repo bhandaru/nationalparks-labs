@@ -1,5 +1,6 @@
-Scaling and Self Healing
-Background: Deployment Configurations and Replication Controllers
+# Scaling and Self Healing
+
+## Background: Deployment Configurations and Replication Controllers
 
 While Services provide routing and load balancing for Pods, which may go in and out of existence, ReplicationControllers (RC) are used to specify and then ensure the desired number of Pods (replicas) are in existence. For example, if you always want your application server to be scaled to 3 Pods (instances), a ReplicationController is needed. Without an RC, any Pods that are killed or somehow die/exit are not automatically restarted. ReplicationControllers are how OpenShift "self heals".
 
@@ -10,7 +11,8 @@ A DeploymentConfiguration (DC) defines how something in OpenShift should be depl
 In almost all cases, you will end up using the Pod, Service, ReplicationController and DeploymentConfiguration resources together. And, in almost all of those cases, OpenShift will create all of them for you.
 
 There are some edge cases where you might want some Pods and an RC without a DC or a Service, and others, so feel free to ask us about them after the labs.
-Exercise: Exploring Deployment-related Objects
+
+## Exercise: Exploring Deployment-related Objects
 
 Now that we know the background of what a ReplicatonController and DeploymentConfig are, we can explore how they work and are related. Take a look at the DeploymentConfig (DC) that was created for you when you told OpenShift to stand up the parksmap image:
 
@@ -33,7 +35,8 @@ This lets us know that, right now, we expect one Pod to be deployed (Desired), a
 OpenShift’s HorizontalPodAutoscaler effectively monitors the CPU usage of a set of instances and then manipulates the RCs accordingly.
 
 You can learn more about the CPU-based Horizontal Pod Autoscaler here
-Exercise: Scaling the Application
+
+## Exercise: Scaling the Application
 
 Let’s scale our parksmap "application" up to 2 instances. We can do this with the scale command. You could also do this by clicking the "up" arrow next to the Pod in the OpenShift web console on the overview page. It’s your choice.
 
@@ -89,22 +92,28 @@ parksmap   10.1.0.5:8080,10.1.1.5:8080                 4h
 Your IP addresses will likely be different, as each pod receives a unique IP within the OpenShift environment. The endpoint list is a quick way to see how many pods are behind a service.
 
 You can also see that both Pods are running using the web console:
-Scaling
+
+![Scaling](https://github.com/bhandaru/nationalparks-labs/blob/master/images/Scaling.png)
 
 Overall, that’s how simple it is to scale an application (Pods in a Service). Application scaling can happen extremely quickly because OpenShift is just launching new instances of an existing image, especially if that image is already cached on the node.
-Application "Self Healing"
+
+## Application "Self Healing"
 
 Because OpenShift’s RCs are constantly monitoring to see that the desired number of Pods actually are running, you might also expect that OpenShift will "fix" the situation if it is ever not right. You would be correct!
 
 Since we have two Pods running right now, let’s see what happens if we "accidentally" kill one. Run the oc get pods command again, and choose a Pod name. Then, do the following:
 
+```
 oc delete pod parksmap-1-hx0kv && oc get pods
+```
 
+```
 pod "parksmap-1-h45hj" deleted
 NAME               READY     STATUS              RESTARTS   AGE
 parksmap-1-h45hj   1/1       Terminating         0          4m
 parksmap-1-q4b4r   0/1       ContainerCreating   0          1s
 parksmap-1-vdkd9   1/1       Running             0          32s
+```
 
 Did you notice anything? There is a container being terminated (the one we deleted), and there’s a new container already being created.
 
@@ -115,7 +124,9 @@ Additionally, OpenShift provides rudimentary capabilities around checking the li
 Based on these health checks, if OpenShift decided that our parksmap application instance wasn’t alive, it would kill the instance and then restart it, always ensuring that the desired number of replicas was in place.
 
 More information on probing applications is available in the Application Health section of the documentation and later in this guide.
-Exercise: Scale Down
+
+## Exercise: Scale Down
 
 Before we continue, go ahead and scale your application down to a single instance. Feel free to do this using whatever method you like.
-	Don’t forget to scale down back to 1 instance your parksmap component as otherwise you might experience some weird behavior in later labs. This is due to how the application has been coded and not to OpenShift itself. 
+	
+:information_source: **Don’t forget to scale down back to 1 instance your parksmap component as otherwise you might experience some weird behavior in later labs. This is due to how the application has been coded and not to OpenShift itself.**
