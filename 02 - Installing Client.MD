@@ -36,7 +36,7 @@ In order to extract a zip archive on windows, you will need a zip utility instal
 Now you can add the OpenShift CLI tools to your PATH. Because changing your PATH on windows varies by version of the operating system, we will not list each operating system here. However, the general workflow is right click on your computer name inside of the file explorer. Select Advanced system settings. I guess changing your PATH is considered an advanced task? :) Click on the advanced tab, and then finally click on Environment variables. Once the new dialog opens, select the Path variable and add ```;C:\OpenShift``` at the end. For an easy way out, you could always just copy it to ```C:\Windows``` or a directory you know is already on your path.  
 
 For more detailed instructions:  
-    * [Windows XP](https://support.microsoft.com/en-us/kb/310519)
+    * [Windows XP](https://support.microsoft.com/en-us/kb/310519)  
     * [Windows Vista](http://banagale.com/changing-your-system-path-in-windows-vista.htm)  
     * [Windows 7 & Windows 8](http://geekswithblogs.net/renso/archive/2009/10/21/how-to-set-the-windows-path-in-windows-7.aspx)  
     * Windows 10 - Follow the directions above.  
@@ -55,7 +55,6 @@ Kubernetes Version: v1.17.1+3f6f40d
 ```
 
 If you get an error message, you have not updated your path correctly. If you need help, raise your hand and the instructor will assist.
-Download and Install OpenShift CLI on Linux
 
 ## Download and Install OpenShift CLI on Linux
 Download the the OpenShift CLI tool for [Linux 64](https://github.com/bhandaru/nationalparks-labs/blob/master/occlients/oc-4.4.8-linux.tar.gz)
@@ -66,15 +65,15 @@ Once the file has been downloaded, you will need to extract the contents as it i
 ~/openShift
 ```
 
-Open up a terminal window and change to the directory where you downloaded the file. Once you are in the directory, enter in the following command:
-:information_source:  
-**_The name of the oc packaged archive may vary. Adjust accordingly._**
+Open up a terminal window and change to the directory where you downloaded the file. Once you are in the directory, enter in the following command:  
 
-```$ tar zxvf oc-linux.tar.gz```
+:information_source: **_The name of the oc packaged archive may vary. Adjust accordingly._**. 
 
-The tar.gz file name needs to be replaced by the entire name that was downloaded in the previous step.
+```$ tar zxvf oc-linux.tar.gz```  
 
-Now you can add the OpenShift CLI tools to your PATH.
+The tar.gz file name needs to be replaced by the entire name that was downloaded in the previous step.  
+
+Now you can add the OpenShift CLI tools to your PATH.  
 
 ```$ export PATH=$PATH:~/openShift```
 
@@ -96,7 +95,7 @@ If you get an error message, you have not updated your path correctly. If you ne
 
 Download the the OpenShift CLI tool for [Mac](https://github.com/bhandaru/nationalparks-labs/blob/master/occlients/oc-4.4.8-macosx.zip)
 
-Once the file has been downloaded, you will need to extract the contents as it is a compressed archive. I would suggest saving this file to the following directories:
+Once the file has been downloaded, you will need to extract the contents as it is a compressed archive. I would suggest saving this file to the following directories: 
 
 ```
 ~/openShift
