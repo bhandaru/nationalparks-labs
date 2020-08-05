@@ -9,14 +9,13 @@ In a previous lab, we learned how to deploy a pre-existing image image. Now we w
 
 [Source-to-Image (S2I)](https://github.com/openshift/source-to-image) is a open source project sponsored by Red Hat that has the following goal:
 
-```
+>_*"
 Source-to-image (S2I) is a tool for building reproducible container images. S2I
 produces ready-to-run images by injecting source code into a container image and
 assembling a new container image which incorporates the builder image and built
 source. The result is then ready to use with docker run. S2I supports
 incremental builds which re-use previously downloaded dependencies, previously
-built artifacts, etc.
-```
+built artifacts, etc."*_
 
 OpenShift is S2I-enabled and can use S2I as one of its build mechanisms (in addition to building container images from Dockerfiles, and "custom" builds).
 
@@ -49,68 +48,56 @@ Later in the lab, we want you to make a code change and then rebuild your applic
 ## Build the Code on OpenShift
 
 Similar to how we used "Add to project" before with an existing image, we can do the same for specifying a source code repository. Since for this lab you have your own git repository, let’s use it with a simple Java S2I image.
-
+___
 :information_source: In the following step(s), replace userXY with the project provided to you.
+___
+1. In the OpenShift web console, find your userXY project, and then click the "Add to Project" button and then the browse catalog link as highlighted in the following image:  
+![Add to Project](https://github.com/bhandaru/nationalparks-labs/blob/master/images/Dep1.png)  
 
-In the OpenShift web console, find your userXY project, and then click the "Add to Project" button and then the browse catalog link as highlighted in the following image:
-![Add to Project](https://github.com/bhandaru/nationalparks-labs/blob/master/images/Dep1.png)
+1. This is the service catalog which allows a user to select components they want to add to their application. In this case, we are using Spring Boot so we want to select a JDK without an application server.  
+Note how the platform detects the runtime needed for the deployment. Alternately, search for openjdk, and finally "Red Hat OpenJDK" as shown in the following image:  
+![Service Catalog Languages](https://github.com/bhandaru/nationalparks-labs/blob/master/images/Dep3.png)  
 
-This is the service catalog which allows a user to select components they want to add to their application. In this case, we are using Spring Boot so we want to select a JDK without an application server.
-
-Note how the platform detects the runtime needed for the deployment. Alternately, search for openjdk, and finally "Red Hat OpenJDK" as shown in the following image:
-![Service Catalog Languages](https://github.com/bhandaru/nationalparks-labs/blob/master/images/Dep3.png)
-
-In the Git Repository field enter the base of the Git repository for your nationalparks application. This will cause the S2I process to grab that specific tag in the code repository.
-
+1. In the Git Repository field enter the base of the Git repository for your nationalparks application. This will cause the S2I process to grab that specific tag in the code repository.  
 ```
 https://github.com/openshift-roadshow/nationalparks.git
-```
+```  
+If you were to specify a specific branch or directory in the repository for your code, you would be able to do it in the Advanced Options.  
 
-If you were to specify a specific branch or directory in the repository for your code, you would be able to do it in the Advanced Options.
+1. After you select Red Hat OpenJDK, a dialog is presented as shown in the following image:  
+![Create application](https://github.com/bhandaru/nationalparks-labs/blob/master/images/Dep2.png)   
 
-After you select Red Hat OpenJDK, a dialog is presented as shown in the following image:
-![Create application](https://github.com/bhandaru/nationalparks-labs/blob/master/images/Dep2.png)
-
-Select Java 8 from dropdown.
-
+1. Select Java 8 from dropdown.  
+___
 :information_source: All of these runtimes shown are made available via Templates and ImageStreams, which will be discussed in a later lab.
+___  
 
-
-Don’t click Create, but click on Advanced Options, as there are more things we are going to configure.
-
-We will again set 3 labels to the deployment.
-
+1. Don’t click Create, but click on Advanced Options, as there are more things we are going to configure.  
+We will again set 3 labels to the deployment.  
 ```
 app=workshop
 component=nationalparks
 role=backend
-```
-![Service Catalog Languages](https://github.com/bhandaru/nationalparks-labs/blob/master/images/Dep3.png)
+```  
+![Service Catalog Languages](https://github.com/bhandaru/nationalparks-labs/blob/master/images/Dep3.png)  
 
-You can then hit the button labeled "Create". Then click Continue to the project overview and toggle the > icon next to the deployment config for nationalparks . You will see the build log output directly there.
+1. You can then hit the button labeled "Create". Then click Continue to the project overview and toggle the > icon next to the deployment config for nationalparks . You will see the build log output directly there.  
 ![Service Catalog Languages](https://github.com/bhandaru/nationalparks-labs/blob/master/images/Dep4.png)
 
-This is a Java-based application that uses Maven as the build and dependency system. For this reason, the initial build will take a few minutes as Maven downloads all of the dependencies needed for the application. You can see all of this happening in real time!
-
-From the command line, you can also see the Builds:
-
+1. This is a Java-based application that uses Maven as the build and dependency system. For this reason, the initial build will take a few minutes as Maven downloads all of the dependencies needed for the application. You can see all of this happening in real time!  
+From the command line, you can also see the Builds:  
 ```
 oc get builds
-```
-
-You’ll see output like:
-
+```  
+You’ll see output like:  
 ```
 NAME              TYPE      FROM          STATUS     STARTED              DURATION
 nationalparks-1   Source    Git@b052ae6   Running    About a minute ago   1m2s
-```
-
-You can also view the build logs with the following command:
-
+```  
+You can also view the build logs with the following command:  
 ```
 oc logs -f builds/nationalparks-1
-```
-
+```  
 After the build has completed and successfully:
 
 * The S2I process will push the resulting image to the internal OpenShift registry
@@ -171,3 +158,8 @@ against a MongoDB database
 
 But we don’t have a database. Yet.
 
+<p align="center">
+  <a href="/10%20-%20Remote%20Access%20to%20Application.MD">Previous Exercise</a> &nbsp;|
+  &nbsp;<a href="/README.md">Table of Contents</a> &nbsp;|
+  &nbsp;<a href="/12%20-%20Adding%20Database.MD">Next Exercise</a>
+</p>
