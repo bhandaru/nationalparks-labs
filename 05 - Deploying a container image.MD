@@ -9,29 +9,27 @@ Let’s start by doing the simplest thing possible - get a plain old Docker-form
 
 Return to the web console:
 
-https://master.osevg.openshiftworkshop.com
-___
+https://master.osevg.openshiftworkshop.com  
+___  
 :information_source: In the following steps, replace userXY with the project provided to you.
-___
+___  
 
-Find your **userXY** project and click it. On the next page, click **"Add to Project"**. There are several options, but we are only concerned with "Container Image". Click **"Deploy Image"** in the **"Add to Project"** drop down.
+1. Find your **userXY** project and click it. On the next page, click **"Add to Project"**. There are several options, but we are only concerned with "Container Image". Click **"Deploy Image"** in the **"Add to Project"** drop down.  
 
 ![Add to Project](https://github.com/bhandaru/nationalparks-labs/blob/master/images/post-login.png)
 
-This will open a dialog that will allow you to specify the information for the image you want to deploy. We will learn more about image streams and image stream tags later. For now, select the "Image Name" option, and copy/paste the following into the box:
+2. This will open a dialog that will allow you to specify the information for the image you want to deploy. We will learn more about image streams and image stream tags later. For now, select the "Image Name" option, and copy/paste the following into the box:  
 
 ```bhandaru/parksmap-katacoda:1.0.4```
 
-Your screen will end up looking something like this:
+3. Your screen will end up looking something like this:  
 ![Explore Project](https://github.com/bhandaru/nationalparks-labs/blob/master/images/container-deployment.png)
 
-Either press enter or click on the magnifying glass. OpenShift will then go out to the Docker registry specified and interrogate the image. You then are presented with some options to add things like environment variables, labels, and etc. — which we will learn about later.
+4. Either press enter or click on the magnifying glass. OpenShift will then go out to the Docker registry specified and interrogate the image. You then are presented with some options to add things like environment variables, labels, and etc. — which we will learn about later.
 
-Make sure to have the correct application name:
+5. Make sure to have the correct application name:
 
-Let’s scroll to the bottom of this page and add some labels to better identify this deployment later. Labels will help us identify and filter components in the web UI and in the command line.
-
-We will add 3 labels:
+6. Let’s scroll to the bottom of this page and add some labels to better identify this deployment later. Labels will help us identify and filter components in the web UI and in the command line. We will add 3 labels:
 
 ```
     app=workshop (the name we will be giving to the app)
@@ -40,17 +38,18 @@ We will add 3 labels:
 
     role=frontend (the role this component plays in the overall application)
 ```
-
 ![Explore Project](https://github.com/bhandaru/nationalparks-labs/blob/master/images/container-labels.png)
 
+7. Hit the blue "Create" button at the bottom of the dialog and then click the "Continue to the project overview." link or the "Close" button. Take a moment to look at the various messages that you now see on the overview page.
 
+![Explore Project](/images/initialtopology.png)
 
-Hit the blue "Deploy" button at the bottom of the dialog and then click the "Continue to the project overview." link or the "Close" button. Take a moment to look at the various messages that you now see on the overview page.
+___
+:information_source:  
+WINNING! These few steps are the only ones you need to run to get a container image deployed on OpenShift. This should work with any container image that follows best practices, such as defining an EXPOSE port, not needing to run specifically as the root user or other user name, and a single non-exiting CMD to execute on start.  
 
-![Explore Project](https://github.com/bhandaru/nationalparks-labs/blob/master/images/initialtopology.png)
-
-WINNING! These few steps are the only ones you need to run to get a container image deployed on OpenShift. This should work with any container image that follows best practices, such as defining an EXPOSE port, not needing to run specifically as the root user or other user name, and a single non-exiting CMD to execute on start.
-	Providing appropriate labels is desired when deploying complex applications for organization purposes. OpenShift uses a label app to define and group components together in the Overview page. OpenShift will create this label with some default if the user don’t provide it explicitly.
+Providing appropriate labels is desired when deploying complex applications for organization purposes. OpenShift uses a label app to define and group components together in the Overview page. OpenShift will create this label with some default if the user don’t provide it explicitly.
+___  
 
 ## Background: Containers and Pods
 
@@ -65,17 +64,17 @@ Pods can contain multiple OCI containers. The general idea is for a Pod to conta
 
 ## Exercise: Examining the Pod
 
-In the web console’s overview page you will see that there is a single Pod that was created by your actions.
+1. In the web console’s overview page you will see that there is a single Pod that was created by your actions.
 Pod overview
 
 ![Explore Project](https://github.com/bhandaru/nationalparks-labs/blob/master/images/CheckPod.png)
 
-You can also get a list of all the pods created within your project, by navigating to "Applications → Pods"
+2. You can also get a list of all the pods created within your project, by navigating to "Applications → Pods"
 Pod list
 
 This Pod contains a single container, which happens to be the parksmap application - a simple Spring Boot/Java application.
 
-You can also examine Pods from the command line:
+3. You can also examine Pods from the command line:
 
 ```
 oc get pods
@@ -88,7 +87,7 @@ NAME               READY     STATUS    RESTARTS   AGE
 parksmap-1-hx0kv   1/1       Running   0          2m
 ```
 
-The above output lists all of the Pods in the current Project, including the Pod name, state, restarts, and uptime. Once you have a Pod's name, you can get more information about the Pod using the oc get command. To make the output readable, I suggest changing the output type to YAML using the following syntax:
+4. The above output lists all of the Pods in the current Project, including the Pod name, state, restarts, and uptime. Once you have a Pod's name, you can get more information about the Pod using the oc get command. To make the output readable, I suggest changing the output type to YAML using the following syntax:
 	
 Make sure you use the correct Pod name from your output.
 
@@ -123,12 +122,12 @@ urceVersion":"36222"}}
 ...............
 ```
 
-The web interface also shows a lot of the same information on the Pod details page. If you click in the Pod circle, you will find the details page. You can also get there by clicking "Applications", then "Pods", at the left, and then clicking the Pod name.
+5. The web interface also shows a lot of the same information on the Pod details page. If you click in the Pod circle, you will find the details page. You can also get there by clicking "Applications", then "Pods", at the left, and then clicking the Pod name.
 Pod list
 
 Getting the parksmap image running may take a little while to complete. Each OpenShift node that is asked to run the image has to pull (download) it, if the node does not already have it cached locally. You can check on the status of the image download and deployment in the Pod details page, or from the command line with the oc get pods command that you used before.
 
-<!--
+
 ## Background: Customizing the Image Lifecycle Behavior
 
 Whenever OpenShift asks the node’s CRI (Container Runtime Interface) runtime (Docker daemon or CRI-O) to run an image, the runtime will check to make sure it has the right "version" of the image to run. If it doesn’t, it will pull it from the specified registry.
@@ -146,24 +145,29 @@ There is a lot more information about Services, including the YAML format to mak
 
 Now that we understand the basics of what a Service is, let’s take a look at the Service that was created for the image that we just deployed. In order to view the Services defined in your Project, enter in the following command:
 
+```
 oc get services
+```
 
 You should see output similar to the following:
 
+```
 NAME       TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)    AGE
 parksmap   ClusterIP   172.30.169.213  <none>        8080/TCP   3h
+```
 
 In the above output, we can see that we have a Service named parksmap with an IP/Port combination of 172.30.169.213/8080TCP. Your IP address may be different, as each Service receives a unique IP address upon creation. Service IPs are fixed and never change for the life of the Service.
 
-In the web console, service information is available by clicking "Applications" and then clicking "Services".
+In the web console, service information is available by clicking on "Administrator View" and then clicking "Networking -> Services".
 Services list
 
 You can also get more detailed information about a Service by using the following command to display the data in YAML:
-
+```
 oc get service parksmap -o yaml
+```
 
 You should see output similar to the following:
-
+```
 apiVersion: v1
 kind: Service
 metadata:
@@ -190,7 +194,7 @@ spec:
   type: ClusterIP
 status:
   loadBalancer: {}
-
+```
 Take note of the selector stanza. Remember it.
 
 Alternatively, you can use the web console to view information about the Service.
@@ -198,46 +202,44 @@ Service
 
 It is also of interest to view the YAML of the Pod to understand how OpenShift wires components together. For example, run the following command to get the name of your parksmap Pod:
 
+```
 oc get pods
+```
 
 You should see output similar to the following:
-
+```
 NAME               READY     STATUS    RESTARTS   AGE
 parksmap-1-hx0kv   1/1       Running   0          3h
-
+```
 Now you can view the detailed data for your Pod with the following command:
-
+```
 oc get pod parksmap-1-hx0kv -o yaml
-
+```
 Under the metadata section you should see the following:
-
+```
   labels:
     app: workshop
     component: parksmap
     deployment: parksmap-1
     deploymentconfig: parksmap
     role: frontend
+```
+The Service has selector stanza that refers to deploymentconfig=parksmap.
 
-    The Service has selector stanza that refers to deploymentconfig=parksmap.
-
-    The Pod has multiple Labels:
-
-        app=workshop
-
-        component=parksmap
-
-        role=frontend
-
-        deploymentconfig=parksmap
-
-        deployment=parksmap-1
-
+The Pod has multiple Labels:
+```
+app=workshop
+component=parksmap
+role=frontend
+deploymentconfig=parksmap
+deployment=parksmap-1
+```
 Labels are just key/value pairs. Any Pod in this Project that has a Label that matches the Selector will be associated with the Service. To see this in action, issue the following command:
-
+```
 oc describe service parksmap
-
+```
 You should see something like the following output:
-
+```
 Name:                   parksmap
 Namespace:              userXY
 Labels:                 app=workshop
@@ -250,6 +252,12 @@ Port:                   8080-tcp        8080/TCP
 Endpoints:              10.1.2.5:8080
 Session Affinity:       None
 Events:                 <none>
-
+```
 You may be wondering why only one endpoint is listed. That is because there is only one Pod currently running. In the next lab, we will learn how to scale an application, at which point you will be able to see multiple endpoints associated with the Service.
--->
+
+
+<p align="center">
+  <a href="/04%20-%20Application%20Architecture.MD">Previous Exercise</a> &nbsp;|
+  &nbsp;<a href="/README.md">Table of Contents</a> &nbsp;|
+  &nbsp;<a href="/06%20-%20Scaling%20and%20Healing.MD">Next Exercise</a>
+</p>
