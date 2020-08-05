@@ -5,12 +5,12 @@
 The first thing we want to do to ensure that our oc command line tools was installed and successfully added to our path is to log in to the OpenShift environment that has been provided for this Workshop session.
 	
 ___
-:information_source:  
-In case you had trouble installing the command line tools, you can go ahead and use a hosted version running in our OpenShift cluster. Open a new browser tab and point it to:
+>:information_source:  
+>>In case you had trouble installing the command line tools, you can go ahead and use a hosted version running in our OpenShift cluster. Open a new browser tab and point it to:
 
-```http://terminal-ocp-workshop.apps.osevg.openshiftworkshop.com```
+>>```http://terminal-ocp-workshop.apps.osevg.openshiftworkshop.com```
 
-You will need to log in with your OpenShift user and click on Allow selected permissions. You can then continue with the workshop.
+>>You will need to log in with your OpenShift user and click on Allow selected permissions. You can then continue with the workshop.
 ___
 
 In order to log in, we will use the oc command and then specify the server that we want to authenticate to. Issue the following command:
@@ -124,3 +124,10 @@ Hawkular web
 
 We will be using a mix of command line tooling and the web console for the labs. Get ready!
 -->
+
+
+<p align="center">
+  <a href="/02%20-%20Installing%20Client.MD">Previous Exercise</a> &nbsp;|
+  &nbsp;<a href="/README.md">Table of Contents</a> &nbsp;|
+  &nbsp;<a href="/04%20-%20Application%20Architecture.MD">Next Exercise</a>
+</p>
