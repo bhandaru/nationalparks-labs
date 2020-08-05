@@ -6,7 +6,7 @@ While Services provide routing and load balancing for Pods, which may go in and 
 
 A DeploymentConfiguration (DC) defines how something in OpenShift should be deployed. From the deployments documentation:
 
-*"Building on replication controllers, OpenShift adds expanded support for the software development and deployment lifecycle with the concept of deployments. In the simplest case, a deployment just creates a new replication controller and lets it start up pods. However, OpenShift deployments also provide the ability to transition from an existing deployment of an image to a new one and also define hooks to be run before or after creating the replication controller."*
+>*"Building on replication controllers, OpenShift adds expanded support for the software development and deployment lifecycle with the concept of deployments. In the simplest case, a deployment just creates a new replication controller and lets it start up pods. However, OpenShift deployments also provide the ability to transition from an existing deployment of an image to a new one and also define hooks to be run before or after creating the replication controller."*
 
 In almost all cases, you will end up using the **Pod, Service, ReplicationController** and **DeploymentConfiguration** resources together. And, in almost all of those cases, OpenShift will create all of them for you.
 
@@ -14,7 +14,7 @@ There are some edge cases where you might want some **Pods** and an **RC** witho
 
 ## Exercise: Exploring Deployment-related Objects
 
-Now that we know the background of what a ReplicatonController and DeploymentConfig are, we can explore how they work and are related. Take a look at the DeploymentConfig (DC) that was created for you when you told OpenShift to stand up the parksmap image:
+1. Now that we know the background of what a ReplicatonController and DeploymentConfig are, we can explore how they work and are related. Take a look at the DeploymentConfig (DC) that was created for you when you told OpenShift to stand up the parksmap image:
 
 ```
 oc get dc
@@ -24,9 +24,7 @@ NAME       REVISION   DESIRED   CURRENT   TRIGGERED BY
 parksmap   1          1         1         config,image(parksmap:1.2.0)
 ```
 
-To get more details, we can look into the **ReplicationController** (**RC**).
-
-Take a look at the **ReplicationController** (RC) that was created for you when you told OpenShift to stand up the parksmap image:
+2. To get more details, we can look into the **ReplicationController** (**RC**). Take a look at the **ReplicationController** (RC) that was created for you when you told OpenShift to stand up the parksmap image:
 
 ```
 oc get rc
@@ -45,16 +43,16 @@ You can learn more about the CPU-based [Horizontal Pod Autoscaler here](https://
 
 ## Exercise: Scaling the Application
 
-Let’s scale our parksmap "application" up to 2 instances. We can do this with the scale command. You could also do this by clicking the "up" arrow next to the Pod in the OpenShift web console on the overview page. It’s your choice.
+1. Let’s scale our parksmap "application" up to 2 instances. We can do this with the scale command. You could also do this by clicking the "up" arrow next to the Pod in the OpenShift web console on the overview page. It’s your choice.
 
 ```
 $ oc scale --replicas=2 dc/parksmap
 ```
 
-You can also scale up to two pods by clicking the up arrow in the web console as shown in the following image:
-Scaling
+2. You can also scale up to two pods by clicking the up arrow in the web console as shown in the following image:
+![Scaling](/images/Scaling.png)
 
-To verify that we changed the number of replicas, issue the following command:
+3. To verify that we changed the number of replicas, issue the following command:
 
 ```
 oc get rc
@@ -64,7 +62,7 @@ NAME         DESIRED   CURRENT   READY     AGE
 parksmap-1   2         2         0         4h
 ```
 
-You can see that we now have 2 replicas. Let’s verify the number of pods with the oc get pods command:
+4. You can see that we now have 2 replicas. Let’s verify the number of pods with the oc get pods command:
 
 ```
 oc get pods
@@ -75,7 +73,7 @@ parksmap-1-8g6lb   1/1       Running   0          1m
 parksmap-1-hx0kv   1/1       Running   0          4h
 ```
 
-And lastly, let’s verify that the Service that we learned about in the previous lab accurately reflects two endpoints:
+5. And lastly, let’s verify that the Service that we learned about in the previous lab accurately reflects two endpoints:
 
 ```
 oc describe svc parksmap
@@ -98,7 +96,8 @@ Endpoints:         10.1.0.5:8080,10.1.1.5:8080
 Session Affinity:  None
 Events:            <none>
 ```
-Another way to look at a Service's endpoints is with the following:
+
+6. Another way to look at a Service's endpoints is with the following:
 
 ```
 oc get endpoints parksmap
@@ -121,7 +120,7 @@ Overall, that’s how simple it is to scale an application (Pods in a Service). 
 
 ## Application "Self Healing"
 
-Because OpenShift’s RCs are constantly monitoring to see that the desired number of Pods actually are running, you might also expect that OpenShift will "fix" the situation if it is ever not right. You would be correct!
+1. Because OpenShift’s RCs are constantly monitoring to see that the desired number of Pods actually are running, you might also expect that OpenShift will "fix" the situation if it is ever not right. You would be correct!
 
 Since we have two Pods running right now, let’s see what happens if we "accidentally" kill one. Run the oc get pods command again, and choose a Pod name. Then, do the following:
 
@@ -137,7 +136,7 @@ parksmap-1-q4b4r   0/1       ContainerCreating   0          1s
 parksmap-1-vdkd9   1/1       Running             0          32s
 ```
 
-Did you notice anything? There is a container being terminated (the one we deleted), and there’s a new container already being created.
+2. Did you notice anything? There is a container being terminated (the one we deleted), and there’s a new container already being created.
 
 Also, the names of the Pods are slightly changed. That’s because OpenShift almost immediately detected that the current state (1 Pod) didn’t match the desired state (2 Pods), and it fixed it by scheduling another Pod.
 
@@ -152,3 +151,10 @@ More information on probing applications is available in the Application Health 
 Before we continue, go ahead and scale your application down to a single instance. Feel free to do this using whatever method you like.
 	
 :information_source: **Don’t forget to scale down back to 1 instance your parksmap component as otherwise you might experience some weird behavior in later labs. This is due to how the application has been coded and not to OpenShift itself.**
+
+
+<p align="center">
+  <a href="/05%20-%20Deploying%20a%20container%20image.MD">Previous Exercise</a> &nbsp;|
+  &nbsp;<a href="/README.md">Table of Contents</a> &nbsp;|
+  &nbsp;<a href="/07%20-%20Exposing%20Applications%20to%20outside%20world.MD">Next Exercise</a>
+</p>
