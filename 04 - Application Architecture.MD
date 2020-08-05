@@ -16,3 +16,8 @@ The original source code for this application is located [here](https://github.c
 
 The server-side component of the ParksMap web application acts as a communication gateway to all the available backends. These backends will be dynamically discovered by using service discovery mechanisms provided by OpenShift which will be discussed in more details in the following labs.
 
+<p align="center">
+  <a href="/03%20-%20Exploring%20CLI%20%26%20Web%20Console.MD">Previous Exercise</a> &nbsp;|
+  &nbsp;<a href="/README.md">Table of Contents</a> &nbsp;|
+  &nbsp;<a href="/05%20-%20Deploying%20a%20container%20image.MD">Next Exercise</a>
+</p>
