@@ -15,7 +15,7 @@ You can view current permissions in the web UI, by navigating to Administrator V
 
 The parksmap application wants to talk to the OpenShift API to learn about other Pods, Services, and resources within the Project. You’ll soon learn why!
 ___
-:informationo_source: In the following command(s), replace userXY with the project provided to you.
+:information_source: In the following command(s), replace userXY with the project provided to you.
 ___
 
 1. Ensure the current project is your project. Run the following command from CLI or choose the project from  Web Console.
