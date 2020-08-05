@@ -189,3 +189,10 @@ export https_proxy=http://USERNAME:PASSOWRD@proxy-server.mycorp.com:3128/
 
 Special Characters: If your password contains special characters, you must replace them with ASCII codes, for example the at sign @ must be replaced by the %40 code, e.g. p@ssword = p%40ssword.
 -->
+
+
+<p align="center">
+  <a href="/01%20-%20Environment%20Overview.MD">Previous Exercise</a> &nbsp;|
+  &nbsp;<a href="/README.md">Table of Contents</a> &nbsp;|
+  &nbsp;<a href="/03%20-%20Exploring%20CLI%20%26%20Web%20Console.MD">Next Exercise</a>
+</p>
