@@ -6,21 +6,26 @@ OpenShift provides some convenient mechanisms for viewing application logs. Firs
 
 OpenShift is constructed in such a way that it expects containers to log all information to STDOUT. In this way, both regular and error information is captured via standardized Docker mechanisms. When exploring the Pod's logs directly, you are essentially going through the Docker daemon to access the container’s logs, through OpenShift’s API. Neat!
 	
-
-:information_source: In some cases, applications may not have been designed to send all of their information to STDOUT and STDERR. In many cases, multiple local log files are used. While OpenShift cannot parse any information from these files, nothing prevents them from being created, either. In other cases, log information is sent to some external system. Here, too, OpenShift does not prohibit these behaviors. If you have an application that does not log to STDOUT, either because it already sends log information to some "external" system or because it writes various log information to various files, fear not.
+___
+:information_source:  
+In some cases, applications may not have been designed to send all of their information to STDOUT and STDERR. In many cases, multiple local log files are used. While OpenShift cannot parse any information from these files, nothing prevents them from being created, either. In other cases, log information is sent to some external system. Here, too, OpenShift does not prohibit these behaviors. If you have an application that does not log to STDOUT, either because it already sends log information to some "external" system or because it writes various log information to various files, fear not.
+___
 
 ##Exercise: Examining Logs
 
-Since we already deployed our application, we can take some time to examine its logs. In the web console Overview page, click on the kebab menu (three squares) at the far right of the deployment and then click on the View Logs item.
+1. Since we already deployed our application, we can take some time to examine its logs. In the web console Overview page, click on the kebab menu (three squares) at the far right of the deployment and then click on the View Logs item.
 ![View Logs](https://github.com/bhandaru/nationalparks-labs/blob/master/images/LogsMenu.png)
 
-You should see a nice view of the **Pod**'s logs:
+2. You should see a nice view of the **Pod**'s logs:
 
 ![Application Logs](https://github.com/bhandaru/nationalparks-labs/blob/master/images/ViewLogs.png)
 
-:information_source: It appears there are some errors in the log, and that’s okay. We’ll remedy those in a little bit.
+___
+:information_source:  
+It appears there are some errors in the log, and that’s okay. We’ll remedy those in a little bit.
+___
 
-You also have the option of viewing logs from the command line. Get the name of your Pod:
+3. You also have the option of viewing logs from the command line. Get the name of your Pod:
 
 ```
 oc get pods
@@ -36,7 +41,7 @@ And then use the ``logs``` command to view this Pod's logs:
 oc logs parksmap-1-hx0kv
 ```
 
-You will see all of the application logs scroll on your screen:
+4. You will see all of the application logs scroll on your screen:
 
 ```
 15:34:25.844 [main] DEBUG io.fabric8.kubernetes.client.Config - Trying to configure client from Kubernetes config...
@@ -48,7 +53,10 @@ You will see all of the application logs scroll on your screen:
 15:34:25.962 [main] DEBUG io.fabric8.kubernetes.client.Config - Found service account namespace at: [/var/run/secrets/kubernetes.io/serviceaccount/namespace].
 ....
 ```
-:information_source: You may have noticed an error that mentions a service account. What’s that? Never fear, we can fix it.
+___
+:information_source:  
+You may have noticed an error that mentions a service account. What’s that? Never fear, we can fix it.
+___
 <!--
 ## Exercise: Aggregated Pod Logs
 
@@ -95,3 +103,8 @@ kubernetes.namespace_name:"userXY" AND message:"Failure executing"
 -->
 
 
+<p align="center">
+  <a href="/07%20-%20Exposing%20Applications%20to%20outside%20world.MD">Previous Exercise</a> &nbsp;|
+  &nbsp;<a href="/README.md">Table of Contents</a> &nbsp;|
+  &nbsp;<a href="/09%20-%20Role%20Based%20Access%20Control.MD">Next Exercise</a>
+</p>
