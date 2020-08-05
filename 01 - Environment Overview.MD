@@ -40,7 +40,7 @@ some command for userXY
 ```
 
 <p align="center">
-  <a href="/README.md">Prev</a> |
-  <a href="/README.md">Table of Contents</a> |
-  <a href="/02%20-%20Installing%20Client.MD">Next</a>
+  <a href="/README.md">Previous Exercise</a> &nbsp;|
+  &nbsp;<a href="/README.md">Table of Contents</a> &nbsp;|
+  &nbsp;<a href="/02%20-%20Installing%20Client.MD">Next Exercise</a>
 </p>
