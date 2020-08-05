@@ -44,16 +44,14 @@ anaconda-post.log  bin  dev  etc  home  lib  lib64  lost+found  media  mnt  opt 
 
 The OpenShift Web Console also provides a convenient way to access a terminal session on the container without having to use the CLI.
 
-In order to access a pods terminal via the Web Console, click on "Applications", then "Pods" and finally the pod name as shown in the following image:
+1. In order to access a pods terminal via the Web Console, click on "Applications", then "Pods" and finally the pod name as shown in the following image:
 ![Pod List](https://github.com/bhandaru/nationalparks-labs/blob/master/images/podlist.png)
 
-Once you are viewing the information for the selected pod, click on the "Terminal" tab to open up a shell session.
-![Pod View](https://github.com/bhandaru/nationalparks-labs/blob/master/images/podview.png)
-
+1. Once you are viewing the information for the selected pod, click on the "Terminal" tab to open up a shell session.
+![Pod View](https://github.com/bhandaru/nationalparks-labs/blob/master/images/podview.png)  
 Pretty nifty! Go ahead and execute the same commands you did when using the CLI to see how the Web Console based terminal behaves.
 
-Before proceeding, close the connection to the pod.
-
+1. Before proceeding, close the connection to the pod.  
 ```
 exit
 ```
@@ -73,9 +71,9 @@ You would see something like the following:
 ```
 -rw-r--r--. 1 root root 21753918 Nov 23 15:54 /parksmap.jar
 ```
-
+___
 :information_source: The -- syntax in the oc exec command delineates where exec’s options end and where the actual command to execute begins. Take a look at oc exec --help for more details.
-
+___
 You can also specify the shell commands to run directly with the oc rsh command:
 
 ```
@@ -88,8 +86,14 @@ You would see something like:
 whoami: cannot find name for user ID 1000060000
 command terminated with exit code 1
 ```
-
+___
 :information_source: It is important to understand that, for security reasons, OpenShift does not run containers as the user specified in the Dockerfile by default. In fact, when OpenShift launches a container its user is actually randomized.
-
+___
 :information_source: If you want or need to allow OpenShift users to deploy container images that do expect to run as root (or any specific user), a small configuration change is needed. You can learn more about the container image guidelines for OpenShift, or you can look at the section on enabling images to run with a USER in the Dockerfile.
+___
 
+<p align="center">
+  <a href="/09%20-%20Role%20Based%20Access%20Control.MD">Previous Exercise</a> &nbsp;|
+  &nbsp;<a href="/README.md">Table of Contents</a> &nbsp;|
+  &nbsp;<a href="/11%20-%20Deploying%20Java%20Code.MD">Next Exercise</a>
+</p>
