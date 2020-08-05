@@ -13,11 +13,10 @@ ___
 
 ## Exercise: Examining Logs
 
-1. Since we already deployed our application, we can take some time to examine its logs. In the web console Overview page, click on the kebab menu (three squares) at the far right of the deployment and then click on the View Logs item.
+1. Since we already deployed our application, we can take some time to examine its logs. In the web console Overview page, click on the kebab menu (three squares) at the far right of the deployment and then click on the View Logs item.  
 ![View Logs](https://github.com/bhandaru/nationalparks-labs/blob/master/images/LogsMenu.png)
 
-2. You should see a nice view of the **Pod**'s logs:
-
+2. You should see a nice view of the **Pod**'s logs:  
 ![Application Logs](https://github.com/bhandaru/nationalparks-labs/blob/master/images/ViewLogs.png)
 
 ___
@@ -25,24 +24,20 @@ ___
 It appears there are some errors in the log, and that’s okay. We’ll remedy those in a little bit.
 ___
 
-3. You also have the option of viewing logs from the command line. Get the name of your Pod:
-
+3. You also have the option of viewing logs from the command line. Get the name of your Pod:  
 ```
 oc get pods
 ```
 ```
 NAME               READY     STATUS    RESTARTS   AGE
 parksmap-1-hx0kv   1/1       Running   0          5h
-```
-
+```  
 And then use the ``logs``` command to view this Pod's logs:
-
 ```
 oc logs parksmap-1-hx0kv
 ```
 
-4. You will see all of the application logs scroll on your screen:
-
+4. You will see all of the application logs scroll on your screen:  
 ```
 15:34:25.844 [main] DEBUG io.fabric8.kubernetes.client.Config - Trying to configure client from Kubernetes config...
 15:34:25.937 [main] DEBUG io.fabric8.kubernetes.client.Config - Did not find Kubernetes config at: [/.kube/config]. Ignoring.
