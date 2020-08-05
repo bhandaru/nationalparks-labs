@@ -8,20 +8,22 @@ As OpenShift is a declarative platform, some actions will be performed by the pl
 
 OpenShift automatically creates a few special service accounts in every project. The **default** service account is the one taking the responsibility of running the pods, and OpenShift uses and injects this service account into every pod that is launched. By changing the permissions for that service account, we can do interesting things.
 
-You can view current permissions in the web UI, by navigating to "Resources → Membership" page.
+You can view current permissions in the web UI, by navigating to Administrator View and "User Management → Servicee Account" page.
 ![Membership](https://github.com/bhandaru/nationalparks-labs/blob/master/images/ServiceAccount.png)
 
 ## Exercise: Grant Service Account View Permissions
 
 The parksmap application wants to talk to the OpenShift API to learn about other Pods, Services, and resources within the Project. You’ll soon learn why!
-
+___
 :informationo_source: In the following command(s), replace userXY with the project provided to you.
+___
 
+1. Ensure the current project is your project. Run the following command from CLI or choose the project from  Web Console.
 ```
 oc project userXY
 ```
 
-Then:
+2. Then execute the following command.
 
 ```
 oc policy add-role-to-user view -z default
@@ -35,12 +37,13 @@ The oc policy command above is giving a defined role (view) to a user. But we ar
 
 The ```-z``` syntax is a special one that saves us from having to type out the entire string, which, in this case, is ```system:serviceaccount:userXY:default```. It’s a nifty shortcut.
 	
-
+___
 :information_source: The ```-z``` flag will only work for service accounts in the **current** project. If you’re referring to a service account in a different project, use the ```-n <project>```switch.
+___
 
 Now that the default Service Account now has view access, so now it can query the API to see what resources are within the Project. This also has the added benefit of suppressing the error message! Although, in reality, we fixed the application.
 
-Another way you could have done the same is by using the OpenShift console. Once you’re on the "User Adminitration -→ Role Bindings" page, click on Create Binding button.
+Another way you could have done the same is by using the OpenShift console. Once you’re on the "User Adminitration -> User Managemenet -> Role Bindings" page, click on Create Binding button.
 ![Service account list](https://github.com/bhandaru/nationalparks-labs/blob/master/images/rolebindings.png)
 
 ![Service account list](https://github.com/bhandaru/nationalparks-labs/blob/master/images/createrolebinding.png)
@@ -60,8 +63,9 @@ If you look at the logs for the application now, you should see no errors. That�
 ## Exercise: Grant User View Permissions
 
 If you create a project, you are that project’s administrator. This means that you can grant access to other users, too. If you like, give your neighbor view access to your project using the following command:
-
+___
 :information_source: In the following command(s), replace userXY with the user name of the person to whom you want to grant access.
+___
 
 ```
 oc policy add-role-to-user view userXY
@@ -69,3 +73,8 @@ oc policy add-role-to-user view userXY
 
 Have them go to the project view by clicking the Projects button and verify that they can see your project and its resources. This type of arrangement (view but not edit) might be ideal for a developer getting visibility into a production application’s project.
 
+<p align="center">
+  <a href="/08%20-%20OpenShift%20Logging%20Capabilities.MD">Previous Exercise</a> &nbsp;|
+  &nbsp;<a href="/README.md">Table of Contents</a> &nbsp;|
+  &nbsp;<a href="/10%20-%20Remote%20Access%20to%20Application.MD">Next Exercise</a>
+</p>
