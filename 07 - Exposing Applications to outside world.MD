@@ -13,13 +13,13 @@ The default OpenShift router (HAProxy) uses the HTTP header of the incoming requ
 
 ## Exercise: Creating a Route
 
-Fortunately, creating a Route is a pretty straight-forward process. You simply expose the Service via the command line. Or, via the web console, just click the "Create Route" button associated with the service and choose the defaults as highlighted in the following image:
+1. Fortunately, creating a Route is a pretty straight-forward process. You simply expose the Service via the command line. Or, via the web console, just click the "Create Route" button associated with the service and choose the defaults as highlighted in the following image:
 ![Create Route](https://github.com/bhandaru/nationalparks-labs/blob/master/images/Routes1.png)
 
-When creating a route, some options can be provided, like the hostname for the route or the TLS configuration for the Route.
+2. When creating a route, some options can be provided, like the hostname for the route or the TLS configuration for the Route.
 ![Create Route](https://github.com/bhandaru/nationalparks-labs/blob/master/images/CreateRoute.png)
 
-When using the command line, we can first verify that we don’t already have any existing route:
+3. When using the command line, we can first verify that we don’t already have any existing route:
 
 ```
 oc get routes
@@ -28,7 +28,7 @@ oc get routes
 No resources found.
 ```
 
-Now we need to get the Service name to expose:
+4. Now we need to get the Service name to expose:
 
 ```
 oc get services
@@ -38,7 +38,7 @@ NAME       CLUSTER-IP       EXTERNAL-IP   PORT(S)    AGE
 parksmap   172.30.169.213   <none>        8080/TCP   5h
 ```
 
-Once we know the Service name, creating a Route is a simple one-command task:
+5. Once we know the Service name, creating a Route is a simple one-command task:
 
 ```
 oc expose service parksmap
@@ -47,7 +47,7 @@ oc expose service parksmap
 route "parksmap" exposed
 ```
 
-Verify the Route was created with the following command:
+6. Verify the Route was created with the following command:
 ```
 oc get route
 ```
@@ -57,7 +57,7 @@ parksmap   pa
 rksmap-userXY.apps.osevg.openshiftworkshop.com             parksmap   8080-tcp
 ```
 
-You can also verify the Route by looking at the project in the OpenShift web console:
+7. You can also verify the Route by looking at the project in the OpenShift web console:
 Route created
 
 Pretty nifty, huh? This application is now available at the URL shown in the web console. 
@@ -65,3 +65,9 @@ Pretty nifty, huh? This application is now available at the URL shown in the web
 Click the link and you will see:
 ![Empty map](https://github.com/bhandaru/nationalparks-labs/blob/master/images/EmptyMap.png)
 
+
+<p align="center">
+  <a href="/06%20-%20Scaling%20and%20Healing.MD">Previous Exercise</a> &nbsp;|
+  &nbsp;<a href="/README.md">Table of Contents</a> &nbsp;|
+  &nbsp;<a href="/08%20-%20OpenShift%20Logging%20Capabilities.MD">Next Exercise</a>
+</p>
