@@ -11,7 +11,7 @@ ___
 In some cases, applications may not have been designed to send all of their information to STDOUT and STDERR. In many cases, multiple local log files are used. While OpenShift cannot parse any information from these files, nothing prevents them from being created, either. In other cases, log information is sent to some external system. Here, too, OpenShift does not prohibit these behaviors. If you have an application that does not log to STDOUT, either because it already sends log information to some "external" system or because it writes various log information to various files, fear not.
 ___
 
-##Exercise: Examining Logs
+## Exercise: Examining Logs
 
 1. Since we already deployed our application, we can take some time to examine its logs. In the web console Overview page, click on the kebab menu (three squares) at the far right of the deployment and then click on the View Logs item.
 ![View Logs](https://github.com/bhandaru/nationalparks-labs/blob/master/images/LogsMenu.png)
