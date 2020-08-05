@@ -38,4 +38,9 @@ You will see various code and command blocks throughout these exercises. Some of
 ```
 some command for userXY
 ```
-->[Prev](/README.md)[TOC](/README.md)   [Next](/02%20-%20Installing%20Client.MD)   [Next](/02%20-%20Installing%20Client.MD)<-
+
+<p align="center">
+  <a href="/README.md">Prev</a> |
+  <a href="/README.md">Table of Contents</a> |
+  <a href="/02%20-%20Installing%20Client.MD">Next</a>
+</p>
