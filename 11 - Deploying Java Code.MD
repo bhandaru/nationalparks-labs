@@ -54,25 +54,23 @@ ___
 1. In the OpenShift web console, find your userXY project, and then click the "Add to Project" button and then the browse catalog link as highlighted in the following image:  
 ![Add to Project](https://github.com/bhandaru/nationalparks-labs/blob/master/images/Dep1.png)  
 
-1. This is the service catalog which allows a user to select components they want to add to their application. In this case, we are using Spring Boot so we want to select a JDK without an application server.  
+2. This is the service catalog which allows a user to select components they want to add to their application. In this case, we are using Spring Boot so we want to select a JDK without an application server.  
 Note how the platform detects the runtime needed for the deployment. Alternately, search for openjdk, and finally "Red Hat OpenJDK" as shown in the following image:  
 ![Service Catalog Languages](https://github.com/bhandaru/nationalparks-labs/blob/master/images/Dep3.png)  
 
-1. In the Git Repository field enter the base of the Git repository for your nationalparks application. This will cause the S2I process to grab that specific tag in the code repository.  
+3. In the Git Repository field enter the base of the Git repository for your nationalparks application. This will cause the S2I process to grab that specific tag in the code repository. If you were to specify a specific branch or directory in the repository for your code, you would be able to do it in the Advanced Options.
 ```
 https://github.com/openshift-roadshow/nationalparks.git
 ```  
-If you were to specify a specific branch or directory in the repository for your code, you would be able to do it in the Advanced Options.  
 
-1. After you select Red Hat OpenJDK, a dialog is presented as shown in the following image:  
+4. After you select Red Hat OpenJDK, a dialog is presented as shown in the following image:  
 ![Create application](https://github.com/bhandaru/nationalparks-labs/blob/master/images/Dep2.png)   
 
-1. Select Java 8 from dropdown.  
+5. Select Java 8 from dropdown.  
 ___
 :information_source: All of these runtimes shown are made available via Templates and ImageStreams, which will be discussed in a later lab.
 ___  
-
-1. Don’t click Create, but click on Advanced Options, as there are more things we are going to configure.  
+6. Don’t click Create, but click on Advanced Options, as there are more things we are going to configure.  
 We will again set 3 labels to the deployment.  
 ```
 app=workshop
@@ -80,12 +78,12 @@ component=nationalparks
 role=backend
 ```  
 ![Service Catalog Languages](https://github.com/bhandaru/nationalparks-labs/blob/master/images/Dep3.png)  
+7. You can then hit the button labeled "Create". Then click Continue to the project overview and toggle the > icon next to the deployment config for nationalparks . You will see the build log output directly there.  
+![Service Catalog Languages](https://github.com/bhandaru/nationalparks-labs/blob/master/images/Dep4.png)  
 
-1. You can then hit the button labeled "Create". Then click Continue to the project overview and toggle the > icon next to the deployment config for nationalparks . You will see the build log output directly there.  
-![Service Catalog Languages](https://github.com/bhandaru/nationalparks-labs/blob/master/images/Dep4.png)
+This is a Java-based application that uses Maven as the build and dependency system. For this reason, the initial build will take a few minutes as Maven downloads all of the dependencies needed for the application. You can see all of this happening in real time!  
 
-1. This is a Java-based application that uses Maven as the build and dependency system. For this reason, the initial build will take a few minutes as Maven downloads all of the dependencies needed for the application. You can see all of this happening in real time!  
-From the command line, you can also see the Builds:  
+8. From the command line, you can also see the Builds:  
 ```
 oc get builds
 ```  
@@ -98,27 +96,23 @@ You can also view the build logs with the following command:
 ```
 oc logs -f builds/nationalparks-1
 ```  
-After the build has completed and successfully:
-
+9. After the build has completed and successfully:  
 * The S2I process will push the resulting image to the internal OpenShift registry
 * The DeploymentConfiguration (DC) will detect that the image has changed, and this will cause a new deployment to happen.
 * A ReplicationController (RC) will be spawned for this new deployment.
 * The RC will detect no Pods are running and will cause one to be deployed, as our default replica count is just 1.
 
-In the end, when issuing the oc get pods command, you will see that the build Pod has finished (exited) and that an application Pod is in a ready and running state:
-
+10. In the end, when issuing the oc get pods command, you will see that the build Pod has finished (exited) and that an application Pod is in a ready and running state:  
 ```
 NAME                    READY     STATUS      RESTARTS   AGE
 nationalparks-1-tkid3   1/1       Running     3          2m
 nationalparks-1-build   0/1       Completed   0          3m
 parksmap-1-4hbtk        1/1       Running     0          2h
-```
-
-If you look again at the web console, you will notice that, when you create the application this way, OpenShift also creates a Route for you. You can see the URL in the web console, or via the command line:
-
+```  
+If you look again at the web console, you will notice that, when you create the application this way, OpenShift also creates a Route for you. You can see the URL in the web console, or via the command line:  
 ```
 oc get routes
-```
+```  
 
 Where you should see something like the following:
 
@@ -129,20 +123,23 @@ parksmap        parksmap-userXY.apps.osevg.openshiftworkshop.com                
 ```
 
 In the above example, the URL is:
-:information_source: In the following url(s), replace userXY with the project provided to you.
+___  
+:information_source: In the following url(s), replace userXY with the project provided to you.  
+___
 
 http://nationalparks-userXY.apps.osevg.openshiftworkshop.com
 
 Since this is a backend application, it doesn’t actually have a web interface. However, it can still be used with a browser. All backends that work with the parksmap frontend are required to implement a /ws/info/ endpoint. To test, the complete URL to enter in your browser is:
+___  
 :information_source: In the following url(s), replace userXY with the project provided to you.
-
+___  
 ```
 http://nationalparks-userXY.apps.osevg.openshiftworkshop.com/ws/info/
 ```
 ![Slash](https://github.com/bhandaru/nationalparks-labs/blob/master/images/slash.png)
-
+___  
 :information_source: The trailing slash is required.
-
+___  
 You will see a simple JSON string:
 
 ```
@@ -156,7 +153,7 @@ This is a Java Spring Boot application that performs 2D geo-spatial queries
 against a MongoDB database
 ```
 
-But we don’t have a database. Yet.
+### But we don’t have a database yet!
 
 <p align="center">
   <a href="/10%20-%20Remote%20Access%20to%20Application.MD">Previous Exercise</a> &nbsp;|
