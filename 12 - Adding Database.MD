@@ -24,12 +24,12 @@ The database image is built in a way that it will automatically configure itself
 
 1. In the web console in your ```userXY``` project, click the **"Add to Project"** button and then **"From Catalog"**. Select the "Databases" category and then "Mongo".
 ![Data Stores](https://github.com/bhandaru/nationalparks-labs/blob/master/images/catalog-mongo.png)
-![Data Stores](https://github.com/bhandaru/nationalparks-labs/blob/master/images/template-mongo.png)
+![Data Stores](https://github.com/bhandaru/nationalparks-labs/blob/master/images/template-mogo.png)
 
-1. Alternatively, you could type ```mongodb``` in the search box. Once you have drilled down to see MongoDB, scroll down to find the **MongoDB (Ephemeral) template**, and select it. You will notice that there are several MongoDB templates available. We do not need a database with persistent storage, so the ephemeral Mongo template is what you should choose. Go ahead and select the ephemeral template and click the next button.
+2. Alternatively, you could type ```mongodb``` in the search box. Once you have drilled down to see MongoDB, scroll down to find the **MongoDB (Ephemeral) template**, and select it. You will notice that there are several MongoDB templates available. We do not need a database with persistent storage, so the ephemeral Mongo template is what you should choose. Go ahead and select the ephemeral template and click the next button.
 ![MongoDB](https://github.com/bhandaru/nationalparks-labs/blob/master/images/ephemeral-mongo.png)
 
-1. When we performed the application build, there was no template. Rather, we selected the builder image directly and OpenShift presented only the standard build workflow. Now we are using a template - a preconfigured set of resources that includes parameters that can be customized. In our case, the parameters we are concerned with are — user, password, database, and admin password.
+3. When we performed the application build, there was no template. Rather, we selected the builder image directly and OpenShift presented only the standard build workflow. Now we are using a template - a preconfigured set of resources that includes parameters that can be customized. In our case, the parameters we are concerned with are — user, password, database, and admin password.
 ![MongoDB Deploy](https://github.com/bhandaru/nationalparks-labs/blob/master/images/deploy-mongo.png)
 	
 ___
@@ -46,20 +46,18 @@ ___
 :information_source: Make sure to have configured the MONGODB_DATABASE parameter with the appropriate value as by default it will already have a value of sampledb.
 ___
 
-1. Once you have entered in the above information, click on "Next" to go to the next step which will allow us to add a binding.
+4. Once you have entered in the above information, click on "Next" to go to the next step which will allow us to add a binding.
 ![MongoDB Deploy](https://github.com/bhandaru/nationalparks-labs/blob/master/images/final-mongo.png)
-
 This creates a **"binding"** (as a secret) in our project that we can use in other components, such as the national parks backend, to authenticate to the database.
 
-1. While the database deploys, we will fix the labels assigned to the deployment. Currenly we can not set a label when using templates from the Service Catalog, so in this case we will fix this manually.
+5. While the database deploys, we will fix the labels assigned to the deployment. Currenly we can not set a label when using templates from the Service Catalog, so in this case we will fix this manually.  
 
 Like before, we will add 3 labels:
 * app=workshop (the name we will be giving to the app)
 * component=nationalparks (the name of this deployment)
 * role=backend (the role this component plays in the overall application)
 
-1. Execute the following command:
-
+6. Execute the following command:
 ```
 oc label dc/mongodb-nationalparks svc/mongodb-nationalparks app=workshop component=nationalparks role=database --overwrite
 ```
@@ -104,8 +102,9 @@ We see that the desired and current number of instances for the "-1" deployment 
 ## Exercise: Data, Data, Everywhere
 
 Now that we have a database deployed, we can again visit the nationalparks web service to query for data:
+___
 :information_source: In the following url(s), replace userXY with the project provided to you.
-
+___  
 ```
 http://nationalparks-userXY.apps.osevg.openshiftworkshop.com/ws/data/all
 ```
@@ -119,8 +118,9 @@ And the result?
 Where’s the data? Think about the process you went through. You deployed the application and then deployed the database. Nothing actually loaded anything INTO the database, though.
 
 The application provides an endpoint to do just that:
+___
 :information_source: In the following url(s), replace userXY with the project provided to you.
-
+___
 ```
 http://nationalparks-userXY.apps.osevg.openshiftworkshop.com/ws/data/load
 ```
@@ -143,11 +143,17 @@ ___
 http://parksmap-userXY.apps.osevg.openshiftworkshop.com
 ```
 
-Hmm…​ There’s just one thing. The main map STILL isn’t displaying the parks. That’s because the front end parks map only tries to talk to services that have the right Label.
-	
+Register the backend nationalparks service with parksmap frontend. Copy paste the following command into a browser window. Make sure to replace the userXY with the one assigned to you.
 
+```
+http://parksmap-userXY.apps.osevg.openshiftworkshop.com/ws/backends/register?endpoint=nationalparks
+```
+
+
+Hmm…​ There’s just one thing. The main map STILL isn’t displaying the parks. That’s because the front end parks map only tries to talk to services that have the right Label.  
+___
 :information_source:  You are probably wondering how the database connection magically started working? When deploying applications to OpenShift, it is always best to use environment variables, secrets, or configMaps to define connections to dependent systems. This allows for application portability across different environments. The source file that performs the connection as well as creates the database schema can be viewed here:
-
+___  
 ```
 http://www.github.com/openshift-roadshow/nationalparks/blob/master/src/main/java/com/openshift/evg/roadshow/parks/db/MongoDBConnection.java#L44-l48
 ```
