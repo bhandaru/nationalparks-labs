@@ -56,7 +56,7 @@ Readiness and Liveness Probe
 ___
 :information_source: Note the trailing slash in the URL
 ___
-![HealthCheck](https://github.com/bhandaru/nationalparks-labs/blob/master/images/healthcheck.png)  
+![HealthCheck](https://github.com/bhandaru/nationalparks-labs/blob/master/images/healthcheck-1.png)  
 
 Once you have entered in the values show above, click Save and then click the Overview button in the left navigation. You will notice that these changes caused a new deployment — they counted as a configuration change.
 <!--
