@@ -17,44 +17,48 @@ By default, this will use **EmptyDir** for data storage, which means if the **Po
 
 As you’ve seen so far, the web console makes it very easy to deploy things onto OpenShift. When we deploy the database, we pass in some values for configuration. These values are used to set the username, password, and name of the database.
 
-The database image is built in a way that it will automatically configure itself using the supplied information (assuming there is no data already present in the persistent storage!). The image will ensure that:
-	* A database exists with the specified name
-	* A user exists with the specified name
-	* The user can access the specified database with the specified password
+The database image is built in a way that it will automatically configure itself using the supplied information (assuming there is no data already present in the persistent storage!). The image will ensure that:  
+* A database exists with the specified name
+* A user exists with the specified name
+* The user can access the specified database with the specified password
 
-In the web console in your ```userXY``` project, click the **"Add to Project"** button and then **"From Catalog"**. Select the "Databases" category and then "Mongo".
+1. In the web console in your ```userXY``` project, click the **"Add to Project"** button and then **"From Catalog"**. Select the "Databases" category and then "Mongo".
 ![Data Stores](https://github.com/bhandaru/nationalparks-labs/blob/master/images/catalog-mongo.png)
 ![Data Stores](https://github.com/bhandaru/nationalparks-labs/blob/master/images/template-mongo.png)
 
-Alternatively, you could type ```mongodb``` in the search box. Once you have drilled down to see MongoDB, scroll down to find the **MongoDB (Ephemeral) template**, and select it. You will notice that there are several MongoDB templates available. We do not need a database with persistent storage, so the ephemeral Mongo template is what you should choose. Go ahead and select the ephemeral template and click the next button.
+1. Alternatively, you could type ```mongodb``` in the search box. Once you have drilled down to see MongoDB, scroll down to find the **MongoDB (Ephemeral) template**, and select it. You will notice that there are several MongoDB templates available. We do not need a database with persistent storage, so the ephemeral Mongo template is what you should choose. Go ahead and select the ephemeral template and click the next button.
 ![MongoDB](https://github.com/bhandaru/nationalparks-labs/blob/master/images/ephemeral-mongo.png)
 
-When we performed the application build, there was no template. Rather, we selected the builder image directly and OpenShift presented only the standard build workflow. Now we are using a template - a preconfigured set of resources that includes parameters that can be customized. In our case, the parameters we are concerned with are — user, password, database, and admin password.
+1. When we performed the application build, there was no template. Rather, we selected the builder image directly and OpenShift presented only the standard build workflow. Now we are using a template - a preconfigured set of resources that includes parameters that can be customized. In our case, the parameters we are concerned with are — user, password, database, and admin password.
 ![MongoDB Deploy](https://github.com/bhandaru/nationalparks-labs/blob/master/images/deploy-mongo.png)
 	
+___
 :information_source: Make sure you name your database service name mongodb-nationalparks
+___
 
 You can see that some of the fields say **"generated if empty"**. This is a feature of **Templates** in OpenShift. For now, be sure to use the following values in their respective fields:
-	* MONGODB_USER : mongodb
-	* MONGODB_PASSWORD : mongodb
-	* MONGODB_DATABASE: mongodb
-	* MONGODB_ADMIN_PASSWORD : mongodb
+* MONGODB_USER : mongodb
+* MONGODB_PASSWORD : mongodb
+* MONGODB_DATABASE: mongodb
+* MONGODB_ADMIN_PASSWORD : mongodb
 
+___
 :information_source: Make sure to have configured the MONGODB_DATABASE parameter with the appropriate value as by default it will already have a value of sampledb.
+___
 
-Once you have entered in the above information, click on "Next" to go to the next step which will allow us to add a binding.
+1. Once you have entered in the above information, click on "Next" to go to the next step which will allow us to add a binding.
 ![MongoDB Deploy](https://github.com/bhandaru/nationalparks-labs/blob/master/images/final-mongo.png)
 
 This creates a **"binding"** (as a secret) in our project that we can use in other components, such as the national parks backend, to authenticate to the database.
 
-While the database deploys, we will fix the labels assigned to the deployment. Currenly we can not set a label when using templates from the Service Catalog, so in this case we will fix this manually.
+1. While the database deploys, we will fix the labels assigned to the deployment. Currenly we can not set a label when using templates from the Service Catalog, so in this case we will fix this manually.
 
 Like before, we will add 3 labels:
-	* app=workshop (the name we will be giving to the app)
-	* component=nationalparks (the name of this deployment)
-	* role=backend (the role this component plays in the overall application)
+* app=workshop (the name we will be giving to the app)
+* component=nationalparks (the name of this deployment)
+* role=backend (the role this component plays in the overall application)
 
-Execute the following command:
+1. Execute the following command:
 
 ```
 oc label dc/mongodb-nationalparks svc/mongodb-nationalparks app=workshop component=nationalparks role=database --overwrite
@@ -129,9 +133,11 @@ Items inserted in database: 2740
 
 If you then go back to ```/ws/data/all``` you will see tons of JSON data now. That’s great. Our parks map should finally work!
 
+___
 :information_source: There are some errors reported with browsers like Firefox 54 that don’t properly parse the resulting JSON. It’s a browser problem, and the application is working properly.
-
+___
 :information_source: In the following url(s), replace userXY with the project provided to you.
+___
 
 ```
 http://parksmap-userXY.apps.osevg.openshiftworkshop.com
@@ -201,3 +207,10 @@ http://parksmap-userXY.apps.osevg.openshiftworkshop.com/
 
 You’ll notice that the parks suddenly are showing up. That’s really cool!
 
+
+
+<p align="center">
+  <a href="/11%20-%20Deploying%20Java%20Code.MD">Previous Exercise</a> &nbsp;|
+  &nbsp;<a href="/README.md">Table of Contents</a> &nbsp;|
+  &nbsp;<a href="/13%20-%20Application%20Health.MD">Next Exercise</a>
+</p>
