@@ -36,8 +36,9 @@ Because the ```nationalparks``` component is a backend to serve data that our ex
 OpenShift can work with any accessible Git repository. This could be GitHub, GitLab, or any other server that speaks Git. You can even register webhooks in your Git server to initiate OpenShift builds triggered by any update to the application code!
 
 The repository that we are going to use is already cloned in the internal Gogs repository and located at the following URL:
-
+___
 :information_source: In the following url(s), replace userXY with the Gogs username provided to you. Your Gogs credentials are the same as your OpenShift credentials.
+___
 
 ```
 http://gogs-ocp-workshop.apps.osevg.openshiftworkshop.com/userXY/nationalparks.git
@@ -70,6 +71,7 @@ https://github.com/openshift-roadshow/nationalparks.git
 ___
 :information_source: All of these runtimes shown are made available via Templates and ImageStreams, which will be discussed in a later lab.
 ___  
+
 6. Don’t click Create, but click on Advanced Options, as there are more things we are going to configure.  
 We will again set 3 labels to the deployment.  
 ```
@@ -78,6 +80,7 @@ component=nationalparks
 role=backend
 ```  
 ![Service Catalog Languages](https://github.com/bhandaru/nationalparks-labs/blob/master/images/Dep3.png)  
+
 7. You can then hit the button labeled "Create". Then click Continue to the project overview and toggle the > icon next to the deployment config for nationalparks . You will see the build log output directly there.  
 ![Service Catalog Languages](https://github.com/bhandaru/nationalparks-labs/blob/master/images/Dep4.png)  
 
