@@ -1,4 +1,4 @@
-Workshop Links
+## Workshop Links
 
 You can find all urls, hostnames, usernames and passwords that are needed during the workshop in this page. Note that the urls are also embedded inside the labs so that you don’t have to go back and forth between this page and the labs.
 OpenShift cluster URL
@@ -20,3 +20,11 @@ Password: openshift
 ```
 
 Get your username at http://etherpad-lab.apps.cluster-dfw-5c27.dfw-5c27.example.opentlc.com/p/workshop
+
+
+
+### Labs github repo URL
+
+```
+https://github.com/openshift-roadshow
+```
