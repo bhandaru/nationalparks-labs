@@ -25,6 +25,10 @@ Get your username at http://etherpad-lab.apps.cluster-dfw-5c27.dfw-5c27.example.
 
 ### Labs github repo URL
 
-```
-https://github.com/openshift-roadshow
-```
+Repo URL: https://github.com/openshift-roadshow
+
+Parksmap Web: https://github.com/openshift-roadshow/parksmap-web
+
+National Parks: https://github.com/openshift-roadshow/nationalparks
+
+MLB Parks: https://github.com/openshift-roadshow/mlbparks
