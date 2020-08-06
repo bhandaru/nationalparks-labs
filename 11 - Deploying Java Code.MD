@@ -79,6 +79,12 @@ app=workshop
 component=nationalparks
 role=backend
 ```  
+Also, click on Build Configuration and add the following enviroment variable for the nationalparks backend service to know the name of its database host.
+
+Environment Variable Name: MONGODB_SERVER_HOST  
+Environment Variable Value: mongodb  
+
+
 ![Service Catalog Languages](https://github.com/bhandaru/nationalparks-labs/blob/master/images/Dep3.png)  
 
 7. You can then hit the button labeled "Create". Then click Continue to the project overview and toggle the > icon next to the deployment config for nationalparks . You will see the build log output directly there.  
