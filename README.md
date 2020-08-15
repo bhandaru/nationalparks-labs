@@ -16,17 +16,6 @@
 12. [Adding Database](https://github.com/bhandaru/nationalparks-labs/blob/master/12%20-%20Adding%20Database.MD)  
 13. [Application Health](https://github.com/bhandaru/nationalparks-labs/blob/master/13%20-%20Application%20Health.MD)  
 
-
-
-<!--
-14. [Automate Build and Deployment with pipelines](https://github.com/bhandaru/nationalparks-labs/blob/master/14%20-%20Automate%20Build%20and%20Deployment%20with%20pipelines)  
-15. [Triggering build on code change](https://github.com/bhandaru/nationalparks-labs/blob/master/15%20-%20Triggering%20build%20on%20code%20change)  
-16. [Using Application Templates](https://github.com/bhandaru/nationalparks-labs/blob/master/16%20-%20Using%20Application%20Templates)  
-17. [Clustering Stateful Java EE Applications](https://github.com/bhandaru/nationalparks-labs/blob/master/17%20-%20Clustering%20Stateful%20Java%20EE%20Applications)  
-18. [Binary Builds for Day to Day Development](https://github.com/bhandaru/nationalparks-labs/blob/master/18%20-%20Binary%20Builds%20for%20Day%20to%20Day%20Development)  
-19. [Using Port-Forwarding and Remote Debugging](https://github.com/bhandaru/nationalparks-labs/blob/master/19%20-%20Using%20Port-Forwarding%20and%20Remote%20Debugging)  
-20. [Further Resources](https://github.com/bhandaru/nationalparks-labs/blob/master/20%20-%20Further%20Resources)  
--->
 14. [Workshop Links](https://github.com/bhandaru/nationalparks-labs/blob/master/21%20-%20Workshop%20Links.MD) 
 
 
