@@ -23,7 +23,7 @@ Additionally, a predefined number of user accounts have been provisioned.
 Before continuing, please visit visit the Etherpad at the following URL:
 
 ```
-http://etherpad-ocp-workshop.apps.osevg.openshiftworkshop.com/p/workshop
+http://etherpad-etherpad.apps.cluster-dfw-a75a.dfw-a75a.example.opentlc.com/p/Wipro_workshop_10152020
 ```
 
 Decide on a user account among one of the available users or use the one that has been assigned to you by the instructor. Find that user account and type your name next to it. This will be your user account for the duration of these exercises. For example:
