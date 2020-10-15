@@ -77,7 +77,7 @@ ___
 You will see the following confirmation message:
 
 ```
-Now using project "userXY" on server "http://console-openshift-console.apps.cluster-dfw-a75a.dfw-a75a.example.opentlc.com".
+Now using project "userXY" on server "https://api.cluster-dfw-a75a.dfw-a75a.example.opentlc.com:6443".
 ```
 
 If you had multiple projects, the first thing you would want to do is to switch to the userXY project to make sure you’re on the correct project from now on. You can do this with the following command:  
@@ -91,7 +91,7 @@ oc project userXY
 You will see the following confirmation message:
 
 ```
-Now using project "userXY" on server "http://console-openshift-console.apps.cluster-dfw-a75a.dfw-a75a.example.opentlc.com".
+Now using project "userXY" on server "https://api.cluster-dfw-a75a.dfw-a75a.example.opentlc.com:6443".
 ```
 ___  
 
