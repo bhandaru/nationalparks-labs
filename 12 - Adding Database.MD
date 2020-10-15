@@ -106,7 +106,7 @@ ___
 :information_source: In the following url(s), replace userXY with the project provided to you.
 ___  
 ```
-http://nationalparks-userXY.apps.osevg.openshiftworkshop.com/ws/data/all
+http://nationalparks-git-userXY.apps.cluster-dfw-a75a.dfw-a75a.example.opentlc.com/ws/data/all
 ```
 
 And the result?
@@ -122,7 +122,7 @@ ___
 :information_source: In the following url(s), replace userXY with the project provided to you.
 ___
 ```
-http://nationalparks-userXY.apps.osevg.openshiftworkshop.com/ws/data/load
+http://nationalparks-git-userXY.apps.cluster-dfw-a75a.dfw-a75a.example.opentlc.com/ws/data/load
 ```
 
 And the result?
@@ -140,13 +140,13 @@ ___
 ___
 
 ```
-http://parksmap-userXY.apps.osevg.openshiftworkshop.com
+http://parksmap-userXY.apps.cluster-dfw-a75a.dfw-a75a.example.opentlc.com/
 ```
 
 Register the backend nationalparks service with parksmap frontend. Copy paste the following command into a browser window. Make sure to replace the userXY with the one assigned to you.
 
 ```
-http://parksmap-userXY.apps.osevg.openshiftworkshop.com/ws/backends/register?endpoint=nationalparks
+http://parksmap-userXY.apps.cluster-dfw-a75a.dfw-a75a.example.opentlc.com/ws/backends/register?endpoint=nationalparks
 ```
 
 
