@@ -106,7 +106,7 @@ ___
 :information_source: In the following url(s), replace userXY with the project provided to you.
 ___  
 ```
-http://nationalparks-git-userXY.apps.cluster-dfw-a75a.dfw-a75a.example.opentlc.com/ws/data/all
+http://nationalparks-userXY.apps.cluster-dfw-a75a.dfw-a75a.example.opentlc.com/ws/data/all
 ```
 
 And the result?
@@ -122,7 +122,7 @@ ___
 :information_source: In the following url(s), replace userXY with the project provided to you.
 ___
 ```
-http://nationalparks-git-userXY.apps.cluster-dfw-a75a.dfw-a75a.example.opentlc.com/ws/data/load
+http://nationalparks-userXY.apps.cluster-dfw-a75a.dfw-a75a.example.opentlc.com/ws/data/load
 ```
 
 And the result?
@@ -207,7 +207,7 @@ route "nationalparks" labeled
 If you check your browser now:
 :information_source: In the following url(s), replace userXY with the project provided to you.
 
-http://parksmap-userXY.apps.osevg.openshiftworkshop.com/
+http://parksmap-userXY.apps.cluster-dfw-a75a.dfw-a75a.example.opentlc.com//
 
 ![MongoDB](https://github.com/bhandaru/nationalparks-labs/blob/master/images/maps-final.png)
 
