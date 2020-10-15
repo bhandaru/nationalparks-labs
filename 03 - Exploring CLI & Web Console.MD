@@ -16,7 +16,7 @@ ___
 In order to log in, we will use the oc command and then specify the server that we want to authenticate to. Issue the following command:
 
 ```
-oc login https://master.osevg.openshiftworkshop.com
+oc login  https://api.cluster-dfw-a75a.dfw-a75a.example.opentlc.com:6443
 ```
 
 You may see the following output:
@@ -33,7 +33,7 @@ ___
 :information_source:  
 On some versions of Microsoft Windows, you may get an error that the server has an invalid x.509 certificate. If you receive this error, enter in the following command:  
 ```
-oc login https://master.osevg.openshiftworkshop.com --insecure-skip-tls-verify=true
+oc login https://api.cluster-dfw-a75a.dfw-a75a.example.opentlc.com:6443 --insecure-skip-tls-verify=true
 ```
 ___  
 
@@ -77,7 +77,7 @@ ___
 You will see the following confirmation message:
 
 ```
-Now using project "userXY" on server "https://master.osevg.openshiftworkshop.com".
+Now using project "userXY" on server "http://console-openshift-console.apps.cluster-dfw-a75a.dfw-a75a.example.opentlc.com".
 ```
 
 If you had multiple projects, the first thing you would want to do is to switch to the userXY project to make sure you’re on the correct project from now on. You can do this with the following command:  
@@ -91,7 +91,7 @@ oc project userXY
 You will see the following confirmation message:
 
 ```
-Now using project "userXY" on server "https://master.osevg.openshiftworkshop.com".
+Now using project "userXY" on server "http://console-openshift-console.apps.cluster-dfw-a75a.dfw-a75a.example.opentlc.com".
 ```
 ___  
 
@@ -99,7 +99,7 @@ ___
 
 OpenShift ships with a web-based console that will allow users to perform various tasks via a browser. To get a feel for how the web console works, open your browser and go to the following URL:
 
-https://master.osevg.openshiftworkshop.com
+http://console-openshift-console.apps.cluster-dfw-a75a.dfw-a75a.example.opentlc.com
 
 The first screen you will see is the authentication screen. You will be prompted for the username and password combination for your user account. Use the username and password combination provided to you by the instructor of this workshop:
 
