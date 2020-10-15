@@ -25,7 +25,6 @@ Openshift API for command line 'oc' client:  https://api.cluster-dfw-a75a.dfw-a7
 
 
 Download oc client from https://mirror.openshift.com/pub/openshift-v4/clients/ocp/4.4.8/openshift-client-linux-4.4.8.tar.gz
-https://console-openshift-console.apps.cluster-dfw-a75a.dfw-a75a.example.opentlc.com/command-line-tools
 
 ### Labs github repo URL
 
