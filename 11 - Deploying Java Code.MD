@@ -137,14 +137,14 @@ ___
 :information_source: In the following url(s), replace userXY with the project provided to you.  
 ___
 
-http://nationalparks-userXY.apps.osevg.openshiftworkshop.com
+http://nationalparks-userXY.apps.cluster-dfw-a75a.dfw-a75a.example.opentlc.com/ws/info/
 
 Since this is a backend application, it doesn’t actually have a web interface. However, it can still be used with a browser. All backends that work with the parksmap frontend are required to implement a /ws/info/ endpoint. To test, the complete URL to enter in your browser is:
 ___  
 :information_source: In the following url(s), replace userXY with the project provided to you.
 ___  
 ```
-http://nationalparks-userXY.apps.osevg.openshiftworkshop.com/ws/info/
+http://nationalparks-userXY.apps.cluster-dfw-a75a.dfw-a75a.example.opentlc.com/ws/info/
 ```
 ![Slash](https://github.com/bhandaru/nationalparks-labs/blob/master/images/slash.png)
 ___  
