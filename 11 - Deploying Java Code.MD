@@ -31,6 +31,7 @@ The backend service that we will be deploying as part of this exercise is called
 
 Because the ```nationalparks``` component is a backend to serve data that our existing frontend (parksmap) will consume, we are going to build it inside the existing project that we have been working with. To illustrate how you can interact with OpenShift via the CLI or the web console, we will deploy the nationalparks component using the web console.
 
+<!--
 ### Using Application Code on an Embedded Git Server
 
 OpenShift can work with any accessible Git repository. This could be GitHub, GitLab, or any other server that speaks Git. You can even register webhooks in your Git server to initiate OpenShift builds triggered by any update to the application code!
@@ -45,7 +46,7 @@ http://gogs-ocp-workshop.apps.osevg.openshiftworkshop.com/userXY/nationalparks.g
 ```
 
 Later in the lab, we want you to make a code change and then rebuild your application. This is a fairly simple Spring framework Java application.
-
+-->
 ## Build the Code on OpenShift
 
 Similar to how we used "Add to project" before with an existing image, we can do the same for specifying a source code repository. Since for this lab you have your own git repository, let’s use it with a simple Java S2I image.
