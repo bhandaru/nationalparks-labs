@@ -14,7 +14,7 @@ ___
 :information_source: In the following steps, replace userXY with the project provided to you.
 ___  
 
-1. Find your **userXY** project and click it. On the next page, click **"Add to Project"**. There are several options, but we are only concerned with "Container Image". Click **"Deploy Image"** in the **"Add to Project"** drop down.  
+1. Find your **userXY** project and click it. On the next page, click **"Add to Project"**. There are several options, but we are only concerned with "Container Image". Click **"Container Image"** in the **"Add to Project"** drop down.  
 
 ![Add to Project](https://github.com/bhandaru/nationalparks-labs/blob/master/images/post-login.png)
 
