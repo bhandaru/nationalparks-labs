@@ -9,7 +9,7 @@ Let’s start by doing the simplest thing possible - get a plain old Docker-form
 
 Return to the web console:
 
-https://master.osevg.openshiftworkshop.com  
+http://console-openshift-console.apps.cluster-dfw-a75a.dfw-a75a.example.opentlc.com  
 ___  
 :information_source: In the following steps, replace userXY with the project provided to you.
 ___  
