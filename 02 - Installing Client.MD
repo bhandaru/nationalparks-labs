@@ -21,10 +21,10 @@ Kubernetes Version: v1.17.1+3f6f40d
 
 If the ```oc``` doesn’t exist or you have an older version of the OpenShift CLI, follow the next sections to install or update the OpenShift CLI. Otherwise, skip to the next lab.  
 
-## Download and Install OpenShift CLI on Windows  
+## Download OpenShift CLI Tool
+Download the the OpenShift CLI tool by clicking on the <img src="https://github.com/bhandaru/nationalparks-labs/blob/master/images/helpicon.png" width="32" height="32" /> icon on the top right corner of the web console and choosing ```Command line tools```. 
 
-Download the the OpenShift CLI tool for [Microsoft Windows](https://github.com/bhandaru/nationalparks-labs/blob/master/occlients/oc-4.4.8-windows.zip)  
-
+## Install OpenShift CLI on Windows  
 Once the file has been downloaded, you will need to extract the contents as it is a compressed archive. I would suggest saving this file to the following directories:  
 
 ```
@@ -56,7 +56,7 @@ Kubernetes Version: v1.17.1+3f6f40d
 
 If you get an error message, you have not updated your path correctly. If you need help, raise your hand and the instructor will assist.
 
-## Download and Install OpenShift CLI on Linux
+## Install OpenShift CLI on Linux
 Download the the OpenShift CLI tool for [Linux 64](https://github.com/bhandaru/nationalparks-labs/blob/master/occlients/oc-4.4.8-linux.tar.gz)
 
 Once the file has been downloaded, you will need to extract the contents as it is a compressed archive. I would suggest saving this file to the following directories:
@@ -91,7 +91,7 @@ Kubernetes Version: v1.17.1+3f6f40d
 
 If you get an error message, you have not updated your path correctly. If you need help, raise your hand and the instructor will assist.
 
-## Download and Install OpenShift CLI on Mac
+## Install OpenShift CLI on Mac
 
 Download the the OpenShift CLI tool for [Mac](https://github.com/bhandaru/nationalparks-labs/blob/master/occlients/oc-4.4.8-macosx.zip)
 
