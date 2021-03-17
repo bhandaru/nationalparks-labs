@@ -40,9 +40,8 @@ ___
 :information_source: Make sure to have configured the MONGODB_DATABASE parameter with the appropriate value as by default it will already have a value of sampledb.
 ___
 
-5. Once you have entered in the above information, click on "Next" to go to the next step which will allow us to add a binding.
+4. Once you have entered in the above information, click on "Create" to deploy the MongoDB Container.
 ![MongoDB Deploy](https://github.com/bhandaru/nationalparks-labs/blob/master/images/final-mongo.png)
-This creates a **"binding"** (as a secret) in our project that we can use in other components, such as the national parks backend, to authenticate to the database.
 
 6. While the database deploys, we will fix the labels assigned to the deployment. Currenly we can not set a label when using templates from the Service Catalog, so in this case we will fix this manually.  
 
@@ -53,7 +52,7 @@ Like before, we will add 3 labels:
 
 7. Execute the following command:
 ```
-oc label dc/mongodb-nationalparks svc/mongodb-nationalparks app=workshop component=nationalparks role=database --overwrite
+oc label dc/mongodb svc/mongodb app=workshop component=nationalparks role=database --overwrite
 ```
 
 <!--
