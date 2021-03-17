@@ -60,9 +60,11 @@ ___
 Note how the platform detects the runtime needed for the deployment. Alternately, search for openjdk, and finally "Red Hat OpenJDK" as shown in the following image:  
 ![Service Catalog Languages](https://github.com/bhandaru/nationalparks-labs/blob/master/images/Dep3.png)  
 
-3. In the Git Repository field enter the base of the Git repository for your nationalparks application. This will cause the S2I process to grab that specific tag in the code repository. If you were to specify a specific branch or directory in the repository for your code, you would be able to do it in the Advanced Options.
+3. In the Git Repository field enter the base of the Git repository for your nationalparks application. This will cause the S2I process to grab that specific tag in the code repository. If you were to specify a specific branch or directory in the repository for your code, you would be able to do it in the Advanced Options. Using Advanced Options specify branch ```1.3.0``` for the git repo to clone for the build.
+
 ```
-https://github.com/openshift-roadshow/nationalparks.git
+repo url: https://github.com/openshift-roadshow/nationalparks.git
+branch: 1.3.0
 ```  
 
 4. After you select Red Hat OpenJDK, a dialog is presented as shown in the following image:  
