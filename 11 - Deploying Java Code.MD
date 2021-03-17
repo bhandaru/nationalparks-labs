@@ -70,7 +70,7 @@ branch: 1.3.0
 4. After you select Red Hat OpenJDK, a dialog is presented as shown in the following image:  
 ![Create application](https://github.com/bhandaru/nationalparks-labs/blob/master/images/Dep2.png)   
 
-5. Select Java 8 from dropdown.  
+5. Select Java 8 from dropdown. Name the component as ```nationalparks```
 ___
 :information_source: All of these runtimes shown are made available via Templates and ImageStreams, which will be discussed in a later lab.
 ___  
